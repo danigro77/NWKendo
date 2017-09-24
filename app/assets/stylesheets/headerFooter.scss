@@ -1,0 +1,19 @@
+header, footer {
+  padding: 15px 0;
+}
+
+header {
+  height: 40px;
+  border-bottom: 1px lightgray solid;
+  box-shadow: 0 2px 3px 0  rgba(141, 142, 138, 0.30);
+}
+
+footer {
+  height: 60px;
+  background: black;
+  color: white;
+  a {
+    text-decoration: none;
+    color: lightgray;
+  }
+}

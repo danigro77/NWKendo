@@ -9,6 +9,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: "/layouts/header" %>
+    <div class="wrapper content">
+      <%= yield %>
+    </div>
+    <%= render partial: "/layouts/footer" %>
+
   </body>
 </html>

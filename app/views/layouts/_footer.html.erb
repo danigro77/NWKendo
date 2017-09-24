@@ -1,0 +1,7 @@
+<footer>
+  <div class="wrapper">
+    <% unless params[:controller] == 'sessions'%>
+        <%= link_to "Log In", new_session_path %>
+    <%end%>
+  </div>
+</footer>
