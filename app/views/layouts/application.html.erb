@@ -4,16 +4,29 @@
     <title>NWKendo</title>
     <%= csrf_meta_tags %>
 
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render partial: "/layouts/header" %>
-    <div class="wrapper content">
-      <%= yield %>
+
+    <div class="mdl-layout mdl-js-layout">
+      <%= render partial: "/layouts/header" %>
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--2-col"></div>
+
+        <div class="mdl-cell mdl-cell--8-col">
+          <%= yield %>
+        </div>
+
+        <div class="mdl-cell mdl-cell--2-col"></div>
+      </div>
+
+      <%= render partial: "/layouts/footer" %>
+
     </div>
-    <%= render partial: "/layouts/footer" %>
 
   </body>
 </html>

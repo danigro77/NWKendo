@@ -1,7 +1,26 @@
-<footer>
-  <div class="wrapper">
-    <% unless params[:controller] == 'sessions'%>
-        <%= link_to "Log In", new_session_path %>
-    <%end%>
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">
+      More Information
+    </div>
+    <ul class="mdl-mini-footer__link-list">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Privacy and Terms</a></li>
+      <li><a href="#">User Agreement</a></li>
+    </ul>
+  </div>
+  <div class="mdl-mini-footer__right-section">
+    <div class="mdl-logo">
+      Members
+    </div>
+    <ul class="mdl-mini-footer__link-list">
+      <% unless params[:controller] == 'sessions'%>
+        <% if logged_in? %>
+          <li><%= link_to "Log Out", new_session_path %></li>
+        <% else %>
+            <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+        <% end %>
+      <%end%>
+    </ul>
   </div>
 </footer>

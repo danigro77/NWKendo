@@ -2,11 +2,7 @@ body {
   font-family: Arial;
   padding: 0;
   margin: 0;
-  .wrapper {
-    width: 900px;
-    margin: 0 auto;
-    &.content {
-      padding: 15px 0;
-    }
+  .mdl-grid {
+    margin: 100px 0;
   }
 }
