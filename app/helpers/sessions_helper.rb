@@ -9,7 +9,7 @@ module SessionsHelper
   end
 
   def current_admin
-    @current_user && @current_user.is_admin
+    current_user && current_user.is_admin
   end
 
   def logged_in?

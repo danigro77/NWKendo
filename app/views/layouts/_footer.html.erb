@@ -16,7 +16,7 @@
     <ul class="mdl-mini-footer__link-list">
       <% unless params[:controller] == 'sessions'%>
         <% if logged_in? %>
-          <li><%= link_to "Log Out", new_session_path %></li>
+          <li><%= link_to "Log Out", login_path %></li>
         <% else %>
             <li><%= link_to "Log Out", logout_path, method: :delete %></li>
         <% end %>

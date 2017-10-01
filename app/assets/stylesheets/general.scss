@@ -1,8 +1,26 @@
 body {
-  font-family: Arial;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   padding: 0;
+  position: relative;
   margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  .mdl-layout__container {
+    padding-bottom: 100px;
+  }
   .mdl-grid {
     margin: 100px 0;
+  }
+  .notice, .alert {
+    background: linen;
+    border: gainsboro 1px solid;
+    border-radius: 5px;
+    z-index: 500;
+  }
+  .alert {
+    background: lightcoral;
+  }
+  .hide {
+    display: none;
   }
 }

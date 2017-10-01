@@ -1,0 +1,45 @@
+img {
+  width: 100%;
+}
+.mdl-data-table {
+  table-layout:fixed;
+  width:100%;
+}
+.image-table td, th {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+table.image-table {
+  width: 100%;
+  .preview {
+    width: 10%;
+    .preview-img {
+      width: 100%;
+    }
+  }
+  .title, .url {
+    width: 10%;
+  }
+  .photographer {
+    width: 5%;
+  }
+  .description {
+    width: 30%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .actions {
+    width: 5%;
+  }
+  .photographer-list {
+    width: 90px;
+  }
+}
+
+.front-image {
+  height: 50%;
+}

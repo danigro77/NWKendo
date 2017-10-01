@@ -33,10 +33,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+#  UI
 gem 'haml', '~> 4.0', '>= 4.0.7'
-
 gem 'jquery-rails', '~> 4.0', '>= 4.0.5'
 gem 'material_design_lite-rails', '~> 1.3'
+gem 'bootstrap', '~> 4.0.0.beta'
 
 gem 'erubis', '~> 2.7'
 # Use Capistrano for deployment

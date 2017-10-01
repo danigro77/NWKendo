@@ -17,4 +17,9 @@ class User < ApplicationRecord
   def self.get_user(id)
     User.find_by(id:id)
   end
+
+  def self.initials(name)
+    name.split(' ').map{|item| item[0].upcase}.join('')
+  end
+
 end

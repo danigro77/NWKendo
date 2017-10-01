@@ -4,12 +4,17 @@
     <title>NWKendo</title>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
 
     <div class="mdl-layout mdl-js-layout">
       <%= render partial: "/layouts/header" %>
@@ -19,14 +24,17 @@
 
         <div class="mdl-cell mdl-cell--8-col">
           <%= yield %>
+
         </div>
 
         <div class="mdl-cell mdl-cell--2-col"></div>
       </div>
 
-      <%= render partial: "/layouts/footer" %>
+
 
     </div>
-
+    <%= render partial: "/layouts/footer" %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
   </body>
 </html>

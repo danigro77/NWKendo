@@ -1,0 +1,31 @@
+<%= form_for(:image) do |f| %>
+  <% url = image.present? ? image.url : 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png' %>
+  <td class="mdl-data-table__cell--non-numeric preview">
+  <%= image_tag url, {class: 'preview-img'} %>
+  </td>
+  <td class="mdl-data-table__cell--non-numeric url">
+    <div class="mdl-textfield mdl-js-textfield">
+      <%= f.text_field :url, class: 'mdl-textfield__input' %>
+    </div>
+  </td>
+  <td class="mdl-data-table__cell--non-numeric title">
+     <div class="mdl-textfield mdl-js-textfield">
+        <%= f.text_field :title, class: 'mdl-textfield__input' %>
+     </div>
+  </td>
+  <td class="mdl-data-table__cell--non-numeric photographer">
+     <div class="mdl-textfield mdl-js-textfield">
+        <%= f.text_field :photographer, class: 'mdl-textfield__input' %>
+     </div>
+  </td>
+  <td class="mdl-data-table__cell--non-numeric description">
+     <div class="mdl-textfield mdl-js-textfield">
+        <%= f.text_field :description, class: 'mdl-textfield__input' %>
+     </div>
+  </td>
+  <td class="mdl-data-table__cell--non-numeric actions">
+    <%= f.submit '', class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored save-image", data: {image: image}  do %>
+        <i class="material-icons">save</i>
+    <% end %>
+  </td>
+<%end%>
