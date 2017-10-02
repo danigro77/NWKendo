@@ -33,10 +33,24 @@ table.image-table {
     text-overflow: ellipsis;
   }
   .actions {
-    width: 5%;
+    width: 7%;
   }
   .photographer-list {
     width: 90px;
+  }
+}
+
+.image-form form {
+  text-align: center;
+  .preview img {
+    width: 200px;
+    padding-bottom: 50px;
+  }
+  .mdl-textfield {
+    width: 90%;
+  }
+  .image-save-button {
+    width: 200px;
   }
 }
 

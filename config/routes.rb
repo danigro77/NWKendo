@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :users
   resources :images
 
+  scope :manage do
+    get 'images/:type', to: 'images#manage', as: 'manage_images'
+  end
+
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'

@@ -1,31 +1,30 @@
-<%= form_for(:image) do |f| %>
-  <% url = image.present? ? image.url : 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png' %>
-  <td class="mdl-data-table__cell--non-numeric preview">
-  <%= image_tag url, {class: 'preview-img'} %>
-  </td>
-  <td class="mdl-data-table__cell--non-numeric url">
-    <div class="mdl-textfield mdl-js-textfield">
-      <%= f.text_field :url, class: 'mdl-textfield__input' %>
+<%= form_for(image) do |f| %>
+    <% url = image.present? && image.url ? image.url : 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png' %>
+    <% image = Image.new unless image.present? %>
+    <div class="preview">
+      <%= image_tag url, {class: 'preview-img'} %>
     </div>
-  </td>
-  <td class="mdl-data-table__cell--non-numeric title">
-     <div class="mdl-textfield mdl-js-textfield">
-        <%= f.text_field :title, class: 'mdl-textfield__input' %>
-     </div>
-  </td>
-  <td class="mdl-data-table__cell--non-numeric photographer">
-     <div class="mdl-textfield mdl-js-textfield">
-        <%= f.text_field :photographer, class: 'mdl-textfield__input' %>
-     </div>
-  </td>
-  <td class="mdl-data-table__cell--non-numeric description">
-     <div class="mdl-textfield mdl-js-textfield">
-        <%= f.text_field :description, class: 'mdl-textfield__input' %>
-     </div>
-  </td>
-  <td class="mdl-data-table__cell--non-numeric actions">
-    <%= f.submit '', class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored save-image", data: {image: image}  do %>
-        <i class="material-icons">save</i>
-    <% end %>
-  </td>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.text_field :url, class: 'mdl-textfield__input', id: 'image-url' %>
+      <label class="mdl-textfield__label" for="image-url">Image URL</label>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.text_field :title, class: 'mdl-textfield__input', id: 'image-title' %>
+      <label class="mdl-textfield__label" for="image-title">Title</label>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.text_field :photographer, class: 'mdl-textfield__input', id: 'image-photographer' %>
+      <label class="mdl-textfield__label" for="image-photographer">Image Owner</label>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label md-textarea-padding">
+      <%= f.text_area :description, class: 'mdl-textfield__input', rows: "3", id:"image-description" %>
+      <label class="mdl-textfield__label" for="image-description">Description</label>
+    </div>
+
+    <%= f.submit 'Save', class: "mdl-button mdl-js-button mdl-button--raised image-save-button"%>
+
 <%end%>

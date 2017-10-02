@@ -28,9 +28,6 @@
 <%end%>
 <%if current_admin%>
     <div class="admin-panel">
-      <button id="show-dialog" type="button" class="mdl-button">Manage Images</button>
-      <dialog class="mdl-dialog" style="width: 90%">
-        <%= render partial: 'images/manage_images' %>
-      </dialog>
+      <%= link_to 'Manage Images', manage_images_path(:home_landing), class: 'mdl-button' %>
     </div>
 <%end%>

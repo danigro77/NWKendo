@@ -30,4 +30,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  manage:
+    images: Manage images
+    home_landing:
+      header: landing's page carousel
