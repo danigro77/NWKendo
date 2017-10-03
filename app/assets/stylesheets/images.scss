@@ -52,6 +52,11 @@ table.image-table {
   .image-save-button {
     width: 200px;
   }
+  .dropdown-menu {
+    width: 250px;
+    max-height: 400px;
+    overflow: scroll;
+  }
 }
 
 .front-image {

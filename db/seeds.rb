@@ -8,13 +8,23 @@
 
 if Rails.env.development?
   unless User.all.present?
-    u = User.new(email: 'user@mail.com', digest: 'password', is_admin: true)
-    u.save
+    # USERS
+    u1 = User.new(email: 'user1@mail.com', password: User.digest('password'), is_admin: true)
+    u1.save
+    u2 = User.new(email: 'user2@mail.com', password: User.digest('password'))
+    u2.save
   end
-#   IMAGES
-#   for front page
-  i1 = Image.new(url: 'https://farm5.staticflickr.com/4398/36024086344_d35a5b0766_k.jpg', title:'Keiko', photographer: 'Daniela Grossmann', description: 'some description')
-  i2 = Image.new(url: 'https://farm5.staticflickr.com/4379/36679713012_e057fac5f1_k.jpg', title:'Keiko', photographer: 'Daniela Grossmann', description: 'some description')
+
+#   PHOTOGRAPHERS
+  p1 = Photographer.new(full_name: "Daniela Grossmann", contact_email: "daniela.grossmann@gmail.com")
+  p2 = Photographer.new(full_name: "Pablo Kohls", contact_email: "pablo.kohls@gmail.com")
+  p1.save
+  p2.save
+
+  #   IMAGES
+  #   for front page
+  i1 = Image.new(url: 'https://farm5.staticflickr.com/4398/36024086344_d35a5b0766_k.jpg', title:'Keiko', photographer: p1, description: 'Some description about the content of the image.')
+  i2 = Image.new(url: 'https://farm5.staticflickr.com/4379/36679713012_e057fac5f1_k.jpg', title:'Keiko', photographer: p1, description: 'Some other description')
   i1.save
   i2.save
 end

@@ -3,25 +3,31 @@ class ImagesController < ApplicationController
   before_action :authorize_admin
 
   def manage
-    @images = Image.where(for_page: params[:type])
+    @type = params[:type]
+    @images = Image.where(for_page: @type)
   end
 
   def destroy
     if @image.delete
-      flash[:notice] = "The image #{@image.title} was sucessfully deleted."
-      render 'home/landing'
+      flash[:notice] = "The image #{@image.title} was successfully deleted."
+      redirect_to manage_images_path(@image.for_page)
     else
       flash[:alert] = "The image #{@image.title} could not be deleted."
     end
   end
 
   def new
+  end
 
+  def new_image
+    @image = Image.new()
+    @type = params[:type]
   end
 
   def create
     if Image.create(image_params)
-      flash[:notice] = "The image was sucessfully created"
+      flash[:notice] = "The image was successfully created"
+      redirect_to manage_images_path(params[:image][:for_page])
     else
       flash[:alert] = "The image could not be created."
     end
@@ -41,7 +47,7 @@ class ImagesController < ApplicationController
 
   private
   def image_params
-    params.require(:image).permit(:url, :title, :description, :photographer, :for_page)
+    params.require(:image).permit(:url, :title, :description, :for_page, :photographer_id, photographer_attributes: [:full_name, :contact_email])
   end
 
   def get_item

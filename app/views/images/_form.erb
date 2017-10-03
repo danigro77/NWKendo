@@ -16,8 +16,11 @@
     </div>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <%= f.text_field :photographer, class: 'mdl-textfield__input', id: 'image-photographer' %>
+
+      <%= f.select(:photographer_id, Photographer.all.collect {|p| [ p.full_name, p.id ] }, {include_blank: "Select a photographer", selected: image.photographer.id}, { :class => 'my_style_class' }) %>
       <label class="mdl-textfield__label" for="image-photographer">Image Owner</label>
+
+      <%= link_to 'Manage Photographer', manage_photographer_path %>
     </div>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label md-textarea-padding">
@@ -28,3 +31,9 @@
     <%= f.submit 'Save', class: "mdl-button mdl-js-button mdl-button--raised image-save-button"%>
 
 <%end%>
+
+<script>
+  $(function () {
+
+  });
+</script>
