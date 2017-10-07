@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'home#landing'
   resources :users
   resources :images
-
+  resources :photographers
 
 
   scope :manage do

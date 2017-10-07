@@ -2,7 +2,7 @@
     <% image = @images.first %>
     <%= image_tag image.url, class: 'front-image', alt:@image.title, title: image.description %>
 <% elsif @images.present? %>
-    <div id="landingPageCarousel" class="carousel slide" data-ride="carousel">
+    <div id="nwCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-inner">
           <% @images.each_with_index do |image, index| %>
@@ -31,3 +31,16 @@
       <%= link_to 'Manage Images', manage_images_path(:home_landing), class: 'mdl-button' %>
     </div>
 <%end%>
+
+<div class="short-info">
+  <div class="mdl-grid short-info-row-1">
+    <div class="mdl-cell mdl-cell--4-col">4</div>
+    <div class="mdl-cell mdl-cell--4-col">4</div>
+    <div class="mdl-cell mdl-cell--4-col">4</div>
+  </div>
+  <div class="mdl-grid short-info-row-2">
+    <div class="mdl-cell mdl-cell--4-col">4</div>
+    <div class="mdl-cell mdl-cell--4-col">4</div>
+    <div class="mdl-cell mdl-cell--4-col">4</div>
+  </div>
+</div>

@@ -2,7 +2,7 @@
     <% url = image.present? && image.url ? image.url : 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png' %>
     <% image = Image.new unless image.present? %>
     <div class="preview">
-      <%= image_tag url, {class: 'preview-img'} %>
+      <%= image_tag url, {class: "#{controller.action_name}-preview-img"} %>
     </div>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -17,16 +17,26 @@
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
-      <%= f.select(:photographer_id, Photographer.all.collect {|p| [ p.full_name, p.id ] }, {include_blank: "Select a photographer", selected: image.photographer.id}, { :class => 'my_style_class' }) %>
+      <%= f.select(:photographer_id, Photographer.all.collect {|p| [ p.full_name, p.id ] },
+                   {include_blank: "Select a photographer",
+                    selected: image && image.photographer ? image.photographer.id : nil},
+                   { class: 'image-select', id: 'image-photographer' }) %>
       <label class="mdl-textfield__label" for="image-photographer">Image Owner</label>
 
-      <%= link_to 'Manage Photographer', manage_photographer_path %>
+      <%= link_to 'Manage Photographer', manage_photographers_path, class: 'manage-photographer mdl-button mdl-js-button mdl-button--raised', target: '_blank' %>
     </div>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label md-textarea-padding">
       <%= f.text_area :description, class: 'mdl-textfield__input', rows: "3", id:"image-description" %>
       <label class="mdl-textfield__label" for="image-description">Description</label>
     </div>
+
+    <% if image.created_at.present? %>
+      <div class="dates">
+        <span class="date">Created at: <%= image.created_at.strftime('%d %b %y') %></span>
+        <span class="date">Updated at: <%= image.updated_at.strftime('%d %b %y') %></span>
+      </div>
+    <%end%>
 
     <%= f.submit 'Save', class: "mdl-button mdl-js-button mdl-button--raised image-save-button"%>
 
