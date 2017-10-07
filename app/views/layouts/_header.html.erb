@@ -11,9 +11,11 @@
 <div class="mdl-layout__drawer">
   <span class="mdl-layout-title">Title</span>
   <nav class="mdl-navigation">
-    <a class="mdl-navigation__link" href="">Link</a>
-    <a class="mdl-navigation__link" href="">Link</a>
-    <a class="mdl-navigation__link" href="">Link</a>
-    <a class="mdl-navigation__link" href="">Link</a>
+    <%= link_to 'Link', root_path %>
+    <%= link_to 'Link', root_path %>
+    <%= link_to 'Link', root_path %>
+    <% if current_admin %>
+        <%= link_to 'Manage', manage_path %>
+    <% end %>
   </nav>
 </div>

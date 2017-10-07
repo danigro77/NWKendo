@@ -1,4 +1,8 @@
 <%= form_for(image) do |f| %>
+    <div class="for_page" title="<%= image.for_page %>">
+      <i class="material-icons"><%= image.for_page %></i>
+    </div>
+
     <% url = image.present? && image.url ? image.url : 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png' %>
     <% image = Image.new unless image.present? %>
     <div class="preview">

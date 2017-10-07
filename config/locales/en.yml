@@ -33,4 +33,6 @@ en:
   manage:
     images: Manage images
     home_landing:
-      header: landing's page carousel
+      header: for the landing's page carousel
+    all:
+      header: in all areas

@@ -2,9 +2,20 @@ class ImagesController < ApplicationController
   before_action :get_item,   only: [:destroy, :update, :edit]
   before_action :authorize_admin
 
+  SYMB = {
+      all: 'all_inclusive',
+      home_landing: 'home'
+  }
+
   def manage
-    @type = params[:type]
-    @images = Image.where(for_page: @type)
+    @sym = SYMB
+    if params[:for_page].nil?
+      @type = 'all'
+      @images = Image.all
+    else
+      @type = params[:type]
+      @images = Image.where(for_page: @type)
+    end
   end
 
   def destroy

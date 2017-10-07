@@ -5,11 +5,16 @@ Rails.application.routes.draw do
   resources :photographers
 
 
+  get '/manage', to: 'home#manage', as: 'manage'
   scope :manage do
     get 'images/:type', to: 'images#manage', as: 'manage_images'
     get '/new_image_for/:type', to: 'images#new_image', as: 'manage_new_image'
     get 'photographers', to: 'photographers#manage', as: 'manage_photographers'
   end
+
+  get '/faq', to: 'home#faq', as: 'question'
+  get '/credits', to: 'home#credits', as: 'credits'
+  get '/terms', to: 'home#terms', as: 'terms'
 
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   get '/login', to: 'sessions#new', as: 'login'
