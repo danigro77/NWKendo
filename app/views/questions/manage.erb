@@ -1,0 +1,64 @@
+<div class="manage">
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--2-col"></div>
+
+    <div class="mdl-cell mdl-cell--8-col">
+      <h3 class="manage-header">Manage FAQ</h3>
+    </div>
+
+    <div class="mdl-cell mdl-cell--2-col">
+      <%= link_to new_question_path, class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
+          <i class="material-icons">add</i>
+      <%end%>
+    </div>
+  </div>
+
+  <div class="scroll-table">
+    <table class="mdl-data-table mdl-js-data-table question-table">
+      <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric icon"></th>
+        <th class="mdl-data-table__cell--non-numeric question">Question</th>
+        <th class="mdl-data-table__cell--non-numeric answer">Answer</th>
+        <th class="mdl-data-table__cell--non-numeric actions"></th>
+        <th class="mdl-data-table__cell--non-numeric actions"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @questions.present? %>
+          <% @questions.each do |question| %>
+              <tr class="view-<%=question.id%>">
+                <td class="mdl-data-table__cell--non-numeric icon">
+                  <i class="material-icons">question_answer</i>
+                </td>
+                <td class="mdl-data-table__cell--non-numeric question">
+                  <div title="<%= question.question %>"><%= question.position %> <%= question.question %></div>
+                </td>
+                <td class="mdl-data-table__cell--non-numeric answer">
+                  <div title="<%= question.answer %>"><%= question.answer %></div>
+                </td>
+                <td class="mdl-data-table__cell--non-numeric actions">
+                  <%= link_to question_path(question), method: :delete, class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+                      <i class="material-icons">delete</i>
+                  <% end %>
+                  <%= link_to edit_question_path(question), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-question"  do %>
+                      <i class="material-icons <%question.id%>">edit</i>
+                  <% end %>
+                </td>
+                <td class="mdl-data-table__cell--non-numeric actions">
+                  <%= link_to change_position_question_path(question, 'up'), method: :put, disabled: question == @questions[0], class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+                      <i class="material-icons">arrow_upward</i>
+                  <% end %>
+                  <%= link_to change_position_question_path(question, 'down'), method: :put, disabled: question == @questions[-1], class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored"  do %>
+                      <i class="material-icons">arrow_downward</i>
+                  <% end %>
+                </td>
+              </tr>
+          <%end%>
+      <% else %>
+          <tr><td colspan="6">No questions saved yet.</td></tr>
+      <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>

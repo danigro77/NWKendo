@@ -1,0 +1,9 @@
+@import "mixin";
+.manage {
+  .icon, .actions {
+    width: 10%;
+  }
+  .question, .answer {
+    @include truncation(40%)
+  }
+}

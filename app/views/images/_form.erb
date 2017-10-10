@@ -20,7 +20,6 @@
     </div>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-
       <%= f.select(:photographer_id, Photographer.all.collect {|p| [ p.full_name, p.id ] },
                    {include_blank: "Select a photographer",
                     selected: image && image.photographer ? image.photographer.id : nil},

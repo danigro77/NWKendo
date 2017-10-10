@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
 
   def manage
     @sym = SYMB
-    if params[:for_page].nil?
+    if params[:type].nil? || params[:type] == '-1'
       @type = 'all'
       @images = Image.all
     else
@@ -31,7 +31,7 @@ class ImagesController < ApplicationController
   end
 
   def new_image
-    @image = Image.new()
+    @image = Image.new(for_page: params[:type])
     @type = params[:type]
   end
 

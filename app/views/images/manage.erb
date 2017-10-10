@@ -8,9 +8,11 @@
     </div>
 
     <div class="mdl-cell mdl-cell--2-col">
-      <%= link_to manage_new_image_path(@type), class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
-          <i class="material-icons">add</i>
-      <%end%>
+      <% if @type != 'all' %>
+          <%= link_to manage_new_image_path(@type), class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
+              <i class="material-icons">add</i>
+          <%end%>
+      <% end %>
     </div>
   </div>
 
@@ -62,7 +64,7 @@
               </tr>
           <%end%>
       <% else %>
-          <tr><td colspan="6">No images yet. Add images by clicking the button.</td></tr>
+          <tr><td colspan="6">No images saved yet.</td></tr>
       <%end%>
       </tbody>
     </table>

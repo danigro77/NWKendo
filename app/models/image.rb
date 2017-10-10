@@ -3,4 +3,6 @@ class Image < ApplicationRecord
   accepts_nested_attributes_for :photographer
 
   enum for_page: { home_landing: 0 }
+
+  validates_presence_of :for_page, :url
 end
