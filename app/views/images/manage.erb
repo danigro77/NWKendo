@@ -1,13 +1,11 @@
-<div class="manage">
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--2-col"></div>
-
-    <div class="mdl-cell mdl-cell--8-col">
+<div class="manage manage-images">
+  <div class="row manage-title-row">
+    <div class="col-2"></div>
+    <div class="col-8 manage-titles">
       <h3 class="manage-header"><%= I18n.t("manage.images") %></h3>
       <h4 class="manage-subheader"><%= I18n.t("manage.#{@type}.header") %></h4>
     </div>
-
-    <div class="mdl-cell mdl-cell--2-col">
+    <div class="col-2">
       <% if @type != 'all' %>
           <%= link_to manage_new_image_path(@type), class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
               <i class="material-icons">add</i>
@@ -16,57 +14,53 @@
     </div>
   </div>
 
-  <div class="scroll-table">
-    <table class="mdl-data-table mdl-js-data-table image-table">
-      <thead>
-      <tr>
-        <th class="mdl-data-table__cell--non-numeric icon"></th>
-        <th class="mdl-data-table__cell--non-numeric preview">Preview</th>
-        <th class="mdl-data-table__cell--non-numeric url">URL</th>
-        <th class="mdl-data-table__cell--non-numeric title">Title</th>
-        <th class="mdl-data-table__cell--non-numeric photographer">(c)</th>
-        <th class="mdl-data-table__cell--non-numeric description">Description</th>
-        <th class="mdl-data-table__cell--non-numeric actions"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% if @images.present? %>
-          <% @images.each do |image| %>
-              <% url = image.url %>
-              <tr class="view-<%=image.id%>">
-                <td class="mdl-data-table__cell--non-numeric icon">
-                  <i class="material-icons"><%= image.for_page %></i>
-                </td>
-                <td class="mdl-data-table__cell--non-numeric preview">
-                  <%= image_tag url, {alt: image.title, title: image.description, class: 'preview-img'} %>
-                </td>
-                <td class="mdl-data-table__cell--non-numeric url">
-                  <div title="<%= url %>"><%= url %></div>
-                </td>
-                <td class="mdl-data-table__cell--non-numeric title">
-                  <div title="<%= image.title %>"><%= image.title %></div>
-                </td>
-                <td class="mdl-data-table__cell--non-numeric photographer">
-                  <% initials = image.photographer ? image.photographer.initials : 'n/a' %>
-                  <div title="<%= image.photographer %>"><%= initials %></div>
-                </td>
-                <td class="mdl-data-table__cell--non-numeric description">
-                  <div title="<%= image.description %>"><%= image.description %></div>
-                </td>
-                <td class="mdl-data-table__cell--non-numeric actions">
+  <% if @images.present? %>
+      <% @images.each do |image| %>
+          <% url = image.url %>
+          <div class="row image-item-row">
+            <div class="col preview">
+              <%= image_tag url, {alt: image.title, title: image.description, class: 'preview-img'} %>
+            </div>
+            <div class="col-8">
+              <div class="row image-content">
+                <div class="col-1 icon">
+                  <i class="material-icons" title="<%= image.for_page %>"><%= image.for_page %></i>
+                </div>
+
+                <div class="col-9 title">
+                  <div class="label">Title</div>
+                  <div class="item" title="<%= image.title %>"><%= image.title %></div>
+                </div>
+                <div class="col-2 actions">
                   <%= link_to image_path(image), method: :delete, class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
                       <i class="material-icons">delete</i>
                   <% end %>
                   <%= link_to edit_image_path(image), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-image"  do %>
                       <i class="material-icons <%image.id%>">edit</i>
                   <% end %>
-                </td>
-              </tr>
-          <%end%>
-      <% else %>
-          <tr><td colspan="6">No images saved yet.</td></tr>
+                </div>
+              </div>
+              <div class="row image-content">
+                <div class="col-1 photographer">
+                  <% initials = image.photographer ? image.photographer.initials : 'n/a' %>
+                  <div title="<%= image.photographer.full_name %>"><%= initials %></div>
+                </div>
+                <div class="col url">
+                  <div class="label">Url</div>
+                  <div class="item" title="<%= url %>"><%= url %></div>
+                </div>
+              </div>
+              <div class="row image-content">
+                <div class="col-1"></div>
+                <div class="col description">
+                  <div class="label">Description</div>
+                  <div class="item" title="<%= image.description %>"><%= image.description %></div>
+                </div>
+              </div>
+            </div>
+          </div>
       <%end%>
-      </tbody>
-    </table>
-  </div>
+  <% else %>
+      <div class="col">No images saved yet.</div>
+  <%end%>
 </div>

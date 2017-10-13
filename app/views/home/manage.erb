@@ -1,97 +1,51 @@
 <div class="manage">
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--3-col">
-      <div class="manage-menu">
-        <h4 class="manage-header">Manage</h4>
-        <!--Content table-->
-        <ol class='manage-menu-list'>
-          <li class="manage-menu-item">
-            <%= link_to 'Media', '#media' %>
+  <div class="row">
+    <div class="col">
+      <div class="card" id="media">
+        <%= image_tag 'media.jpg', alt: 'Manage media', class: 'card-img-top'%>
+        <div class="card-block">
+          <h4 class="card-title">Manage media</h4>
+          <p class="card-text highlight-card-text">Images</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% @all_image_types.each do |type| %>
+              <li class="list-group-item">
+                <i class="material-icons"><%=@sym[type]%></i>
+                <%= link_to @image_types[type], manage_images_path(type == :all ? -1 : type) %>
+              </li>
+          <%end%>
+        </ul>
+        <div class="card-block">
+          <p class="card-text highlight-card-text">Photographers</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i class="material-icons"><%=@all_sym%></i>
+            <%= link_to 'All Photographer', manage_photographers_path %>
           </li>
-          <li class="manage-menu-item">
-            <%= link_to 'Footer', '#footer' %>
-          </li>
-        </ol>
+        </ul>
+        <div class="card-block"></div>
       </div>
-    </div>
-
-    <div class="mdl-cell mdl-cell--9-col">
-      <!--Content-->
-      <div class="scroll-table">
-        <table class="mdl-data-table mdl-js-data-table manage-table">
-          <thead>
-          <tr>
-            <th colspan="2" id="media"><h4>Manage Media</h4></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr class="manage-row">
-            <th class="mdl-data-table__cell--non-numeric main">
-              <h4>Images</h4>
-            </th>
-            <td class="mdl-data-table__cell--non-numeric description">
-              <ul>
-                <% @all_image_types.each do |type| %>
-                  <li class="mdl-list__item image-type">
-                    <span class="mdl-list__item-primary-content">
-                      <i class="material-icons mdl-list__item-icon"><%=@sym[type]%></i>
-                      <%= link_to @image_types[type], manage_images_path(type == :all ? -1 : type) %>
-                    </span>
-                  </li>
-                <%end%>
-              </ul>
-            </td>
-          </tr>
-          <tr class="manage-row">
-            <th class="mdl-data-table__cell--non-numeric main">
-              <h4>Photographers</h4>
-            </th>
-            <td class="mdl-data-table__cell--non-numeric description">
-              <ul>
-                <li class="mdl-list__item image-type">
-                <span class="mdl-list__item-primary-content">
-                  <i class="material-icons mdl-list__item-icon"><%=@all_sym%></i>
-                  <%= link_to 'All Photographer', manage_photographers_path %>
-                </span>
-                </li>
-              </ul>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="scroll-table">
-        <table class="mdl-data-table mdl-js-data-table manage-table">
-          <thead>
-          <tr>
-            <th colspan="2" id="footer"><h4>Manage Footer</h4></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr class="manage-row">
-            <th class="mdl-data-table__cell--non-numeric main">
-              <h4>FAQ</h4>
-            </th>
-            <td class="mdl-data-table__cell--non-numeric description">
-              <ul>
-                <li class="mdl-list__item image-type">
-              <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon"><%=@mange_sym%></i>
-                <%= link_to 'Edit', manage_questions_path %>
-              </span>
-                </li>
-              </ul>
-            </td>
-          </tr>
-
-          </tbody>
-        </table>
-      </div>
-
 
     </div>
 
+    <div class="col">
+      <div class="card" id="footer">
+        <%= image_tag 'footer.jpg', alt: 'Manage media', class: 'card-img-top'%>
+        <div class="card-block">
+          <h4 class="card-title">Manage footer content</h4>
+          <p class="card-text highlight-card-text">Frequently asked questions</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i class="material-icons"><%=@all_sym%></i>
+            <%= link_to 'All Questions and Ansers', manage_questions_path %>
+          </li>
+        </ul>
+        <div class="card-block"></div>
+      </div>
+    </div>
+    <div class="col"></div>
 
   </div>
 </div>

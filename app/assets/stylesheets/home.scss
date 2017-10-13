@@ -1,3 +1,20 @@
+.short-info {
+  .info-block {
+    text-align: center;
+  }
+
+  .info-icon {
+    margin: 0 auto;
+    display: block;
+    text-indent: -9999px;
+    width: 100px;
+    height: 90px;
+    background-size: 100px 82px;
+
+  }
+}
+
+
 .info-pages {
   &.faq {
     .material-icons {

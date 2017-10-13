@@ -1,3 +1,4 @@
 <div class="question-form nw-form">
+  <%= render :partial => "layouts/form_header", :locals => { :title => 'New Question' } %>
   <%= render :partial => "form", :locals => { :question => @question } %>
 </div>

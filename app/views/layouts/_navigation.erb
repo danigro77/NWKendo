@@ -1,0 +1,35 @@
+<ul class="nav flex-column">
+  <% navigation.each do |nav| %>
+      <% klass_names = 'nav-link' %>
+      <% klass_names += ' active' if current_page?(nav[:path]) %>
+      <% if nav.keys.include? :if_clause %>
+          <% if nav[:if_clause] %>
+              <li class="nav-item">
+                <%= link_to nav[:name], nav[:path], class: klass_names %>
+              </li>
+          <% end %>
+      <% else %>
+          <li class="nav-item">
+            <%= link_to nav[:name], nav[:path], class: klass_names %>
+          </li>
+      <% end %>
+      <% if nav.keys.include? :sub_nav %>
+          <% nav[:sub_nav].each do |sub_nav| %>
+              <% klass_names = 'nav-link sub-nav-link' %>
+              <% klass_names += ' active' if current_page?(sub_nav[:path]) %>
+              <% klass_names += ' hide' unless !nav[:hide_sub_nav] || current_page?(nav[:path]) %>
+              <% if sub_nav.keys.include? :if_clause %>
+                  <% if sub_nav[:if_clause] %>
+                      <li class="nav-item">
+                        <%= link_to sub_nav[:name], sub_nav[:path], class: klass_names %>
+                      </li>
+                  <% end %>
+              <% else %>
+                  <li class="nav-item">
+                    <%= link_to sub_nav[:name], sub_nav[:path], class: klass_names %>
+                  </li>
+              <% end %>
+          <%end%>
+      <% end %>
+  <%end%>
+</ul>

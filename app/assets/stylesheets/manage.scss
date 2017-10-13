@@ -1,29 +1,19 @@
 @import "variables";
 .manage {
-  thead {
-    background: lightsteelblue;
-  }
-  .manage-header, .manage-subheader {
+  .highlight-card-text {
+    background: $kendo-blue;
+    color: white;
     text-align: center;
+    padding: 3px;
   }
-  .manage-header {
-    margin-bottom: 0;
+  .card {
+    margin: 15px;
+    width: 400px;
   }
-  .manage-subheader {
-    margin-top: 0;
+  .card-img-top {
+    height: 200px;
   }
-  .scroll-table {
-     max-height: 300px;
-    overflow: scroll;
-  }
-  .add-button {
-    display: inline-block;
-    margin-top: 30px;
-  }
-  .image-type {
-    padding: 0;
-  }
-  .manage-menu{
-    position: fixed;
+  .list-group {
+    margin-left: 20px;
   }
 }

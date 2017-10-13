@@ -1,26 +1,26 @@
-<footer class="mdl-mini-footer">
-  <div class="mdl-mini-footer__left-section">
-    <div class="mdl-logo">
-      More Information
+<footer class="footer">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col">
+      <div class="navbar-brand">
+        More Information
+      </div>
+      <div class="nav-item"><%= link_to 'FAQ', faq_path, class: 'nav-link' %></div>
+      <div class="nav-item"><%= link_to 'Terms of Usage', terms_path, class: 'nav-link' %></div>
+      <div class="nav-item"><%= link_to 'Credits', credits_path, class: 'nav-link' %></div>
     </div>
-    <ul class="mdl-mini-footer__link-list">
-      <li><%= link_to 'FAQ', faq_path %></li>
-      <li><%= link_to 'Terms of Usage', terms_path %></li>
-      <li><%= link_to 'Credits', credits_path %></li>
-    </ul>
-  </div>
-  <div class="mdl-mini-footer__right-section">
-    <div class="mdl-logo">
-      Members
-    </div>
-    <ul class="mdl-mini-footer__link-list">
+    <div class="col-3">
+      <div class="navbar-brand">
+        Members
+      </div>
       <% unless params[:controller] == 'sessions'%>
-        <% if logged_in? %>
-          <li><%= link_to "Log Out", login_path %></li>
-        <% else %>
-            <li><%= link_to "Log Out", logout_path, method: :delete %></li>
-        <% end %>
+          <% if logged_in? %>
+              <div class="nav-item"><%= link_to "Log Out", login_path, class: 'nav-link' %></div>
+          <% else %>
+              <div class="nav-item"><%= link_to "Log Out", logout_path, method: :delete, class: 'nav-link' %></div>
+          <% end %>
       <%end%>
-    </ul>
+    </div>
+    <div class="col-1"></div>
   </div>
 </footer>

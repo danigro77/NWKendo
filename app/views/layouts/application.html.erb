@@ -16,27 +16,29 @@
 
   <body>
     <% if flash[:notice] %>
-        <div class="notice"><%= flash[:notice] %></div>
+      <div class="alert alert-success" role="alert">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:alert] %>
+      </div>
     <% end %>
 
-    <div class="mdl-layout mdl-js-layout">
-      <%= render partial: "/layouts/header" %>
+    <%= render partial: "/layouts/header" %>
 
-      <div class="mdl-grid kendo-mdl-grid">
-        <div class="mdl-cell mdl-cell--2-col"></div>
-
-        <div class="mdl-cell mdl-cell--8-col">
-          <%= yield %>
-
-        </div>
-
-        <div class="mdl-cell mdl-cell--2-col"></div>
+    <div class="row content">
+      <div class="col-2">
+        <%= render partial: "/layouts/navigation" %>
       </div>
-
-
-
+      <div class="col-8">
+        <%= yield %>
+      </div>
+      <div class="col-2"></div>
     </div>
     <%= render partial: "/layouts/footer" %>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.12.5/dist/umd/popper.js" integrity="sha384-KlVcf2tswD0JOTQnzU4uwqXcbAy57PvV48YUiLjqpk/MJ2wExQhg9tuozn5A1iVw" crossorigin="anonymous"></script>

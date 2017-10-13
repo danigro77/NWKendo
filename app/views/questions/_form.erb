@@ -1,31 +1,32 @@
-<%= form_for(question) do |f| %>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <%= f.text_field :position, class: 'mdl-textfield__input', id: 'question-position', disabled: true %>
-      <label class="mdl-textfield__label" for="question-position">Position</label>
-    </div>
+<div class="col">
+  <%= form_for(question) do |f| %>
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <%= f.text_field :question, class: 'mdl-textfield__input', id: 'question' %>
-      <label class="mdl-textfield__label" for="question">Question</label>
-    </div>
-
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <%= f.text_field :answer, class: 'mdl-textfield__input', id: 'question-answer' %>
-      <label class="mdl-textfield__label" for="question-answer">Answer</label>
-    </div>
-
-    <% if question.created_at.present? %>
-      <div class="dates">
-        <span class="date">Created at: <%=question.created_at.strftime('%d %b %y') %></span>
-        <span class="date">Updated at: <%=question.updated_at.strftime('%d %b %y') %></span>
+      <div class="row position">
+        <label class="col-2">Position</label>
+        <div class="col"><%= question.position%></div>
       </div>
-    <% end%>
 
-    <%= f.submit 'Save', class: "mdl-button mdl-js-button mdl-button--raised image-save-button"%>
-<%end%>
+      <div class="form-group row">
+        <label for="question" class="col-2 col-form-label">Question</label>
+        <div class="col-12">
+          <%= f.text_field :question, class: 'form-control', id: 'question' %>
+        </div>
+      </div>
 
-<script>
-  $(function () {
+      <div class="form-group row">
+        <label for="answer" class="col-2 col-form-label">Answer</label>
+        <div class="col-12">
+          <%= f.text_field :answer, class: 'form-control', id: 'answer' %>
+        </div>
+      </div>
 
-  });
-</script>
+      <% if question.created_at.present? %>
+          <div class="dates row">
+            <div class="date col">Created at: <%= question.created_at.strftime('%d %b %y') %></div>
+            <div class="date col">Updated at: <%= question.updated_at.strftime('%d %b %y') %></div>
+            <div class="button col"><%= f.submit 'Save', class: "photographer-save-button btn btn-outline-primary btn-lg"%></div>
+          </div>
+      <%end%>
+  <%end%>
+
+</div>

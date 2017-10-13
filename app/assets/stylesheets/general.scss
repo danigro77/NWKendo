@@ -13,63 +13,30 @@ body {
       text-decoration: none;
     }
   }
-  table {
-    margin-bottom: 30px;
-  }
-  .mdl-layout__container {
-    padding-bottom: 100px;
-  }
-  .kendo-mdl-grid {
-    margin: 80px 0;
-  }
-  .notice, .alert {
-    background: linen;
-    border: gainsboro 1px solid;
-    border-radius: 5px;
-    z-index: 500;
-  }
-  .alert {
-    background: lightcoral;
+  .row.content {
+    margin-top: 110px;
+    margin-bottom: 50px;
   }
   .hide {
     display: none;
   }
+  .right {
+    float: right;
+  }
 
-  .nw-form form {
+  .manage-title-row {
     text-align: center;
-    .preview img {
-      width: 200px;
-      padding-bottom: 50px;
-      &.edit-preview-img:hover {
-        width: 100%;
-      }
-    }
-    .mdl-textfield {
-      width: 90%;
-    }
-    .image-save-button {
-      width: 200px;
-    }
-    .dropdown-menu {
-      width: 250px;
-      max-height: 400px;
-      overflow: scroll;
-    }
-    select {
-      padding: 7px;
-      margin-right: 5px;
-    }
-    .dates {
-      margin: 30px 0;
-      .date {
-        margin: 0 30px;
-      }
+    background: $kendo-blue;
+    color: white;
+
+    .add-button {
+      margin-top: 40px;
+      background: lightgray;
+      color: $kendo-blue;
     }
   }
-  a.mdl-button {
-    &:hover {
-      text-decoration: none;
-      color: inherit;
-    }
+
+  .form-header {
+    text-align: center;
   }
 }

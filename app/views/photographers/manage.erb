@@ -1,56 +1,60 @@
-<div class="manage">
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--2-col"></div>
-
-    <div class="mdl-cell mdl-cell--8-col">
+<div class="manage manage-photographers">
+  <div class="row manage-title-row">
+    <div class="col-2"></div>
+    <div class="col-8 manage-titles">
       <h3 class="manage-header">Manage Photographers</h3>
       <h4 class="manage-subheader">for Images</h4>
     </div>
-
-    <div class="mdl-cell mdl-cell--2-col">
-      <%= link_to new_photographer_path, class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
-          <i class="material-icons">add</i>
-      <%end%>
+    <div class="col-2">
+      <% if @type != 'all' %>
+          <%= link_to new_photographer_path, class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
+              <i class="material-icons">add</i>
+          <%end%>
+      <% end %>
     </div>
   </div>
 
-  <div class="scroll-table">
-    <table class="mdl-data-table mdl-js-data-table photographer-table">
-      <thead>
-      <tr>
-        <th class="mdl-data-table__cell--non-numeric icon"></th>
-        <th class="mdl-data-table__cell--non-numeric full_name">Full Name</th>
-        <th class="mdl-data-table__cell--non-numeric email">Contact Email</th>
-        <th class="mdl-data-table__cell--non-numeric actions"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% if @photographers.present? %>
-          <% @photographers.each do |photographer| %>
-              <tr class="view-<%=photographer.id%>">
-                <td class="mdl-data-table__cell--non-numeric icon">
-                  <i class="material-icons">account_circle</i>
-                </td>
-                <td class="mdl-data-table__cell--non-numeric full_name">
-                  <div title="<%= photographer.full_name %>"><%= photographer.full_name %></div>
-                </td>
-                <td class="mdl-data-table__cell--non-numeric email">
-                  <div title="<%= photographer.contact_email %>"><%= photographer.contact_email %></div>
-                </td>
-                <td class="mdl-data-table__cell--non-numeric actions">
-                  <%= link_to photographer_path(photographer), method: :delete, class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
-                      <i class="material-icons">delete</i>
-                  <% end %>
-                  <%= link_to edit_photographer_path(photographer), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-photographer"  do %>
-                      <i class="material-icons <%photographer.id%>">edit</i>
-                  <% end %>
-                </td>
-              </tr>
+  <% if @photographers.present? %>
+    <% @photographers.each do |photographer| %>
+      <div class="row photographer-item-row">
+        <div class="col-4 preview">
+          <% image = photographer.images.first %>
+          <% if image %>
+            <%= image_tag image.url, {alt: image.title, title: image.title, class: 'preview-img'} %>
+          <%else%>
+            <%= image_tag 'default-image.png', {title: 'No image uploaded yet', class: 'preview-img'} %>
           <%end%>
-      <% else %>
-          <tr><td colspan="6">No photographers saved yet.</td></tr>
-      <%end%>
-      </tbody>
-    </table>
-  </div>
+        </div>
+
+        <div class="col-8">
+          <div class="row photographer-content">
+            <div class="col-1 photographer-initials">
+              <div title="<%= photographer.full_name %>"><%= photographer.initials %></div>
+            </div>
+            <div class="col photographer">
+              <div class="label">Full name</div>
+              <div class="item" title="<%= photographer.full_name %>"><%= photographer.full_name %></div>
+            </div>
+            <div class="col-2 actions">
+              <%= link_to photographer_path(photographer), method: :delete, class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+                  <i class="material-icons">delete</i>
+              <% end %>
+              <%= link_to edit_photographer_path(photographer), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-photographer"  do %>
+                  <i class="material-icons <%photographer.id%>">edit</i>
+              <% end %>
+            </div>
+          </div>
+          <div class="row photographer-content">
+            <div class="col-1"></div>
+            <div class="col photographer">
+              <div class="label">Contact Email</div>
+              <div class="item" title="<%= photographer.contact_email %>"><%= photographer.contact_email %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="col">No photographers saved yet.</div>
+  <%end%>
 </div>

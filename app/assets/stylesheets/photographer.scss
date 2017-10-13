@@ -1,13 +1,10 @@
-@import "mixin";
-@import "variables";
-
-.manage-images {
-  .image-item-row {
+.manage-photographers {
+  .photographer-item-row {
     border-top: 1px lightgray solid;
     &:last-of-type {
       border-bottom: 1px lightgray solid;
     }
-    .image-content {
+    .photographer-content {
       line-height: 40px;
       &:first-of-type {
         margin-top: 5px;
@@ -40,27 +37,11 @@
   }
 }
 
-.image-form {
-  .for_page i {
-    font-size: 40px;
-    width: 40px;
-    color: gray;
-    margin: 0 auto;
+.photographer-form {
+  img {
+    height: 25%;
+    &:hover {
+      height: 40%;
+    }
   }
-  .preview {
-    width: 200px;
-  }
-  select {
-    margin-left: 15px;
-  }
-  .input-group-btn {
-    float: right;
-  }
-  .button input {
-    float: right;
-  }
-}
-
-.front-image {
-  height: 50%;
 }

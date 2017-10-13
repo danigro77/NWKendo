@@ -1,9 +1,42 @@
 @import "mixin";
-.manage {
-  .icon, .actions {
-    width: 10%;
+.manage-questions {
+  .question-item-row {
+    border-top: 1px lightgray solid;
+    &:last-of-type {
+      border-bottom: 1px lightgray solid;
+    }
+    .question-content {
+      line-height: 40px;
+      &:first-of-type {
+        margin-top: 5px;
+      }
+    }
   }
-  .question, .answer {
-    @include truncation(40%)
+  .icon {
+    margin-top: 7px;
+  }
+  .label, .item {
+    float: left;
+  }
+  .label {
+    font-weight: 600;
+    width: 100px;
+  }
+  .item {
+    width: 80%;
+
+  }
+  .actions {
+    text-align: right;
+    padding: 0;
+  }
+}
+
+.question-form {
+  .position, label {
+    text-align: left;
+  }
+  .button input {
+    float: right;
   }
 }

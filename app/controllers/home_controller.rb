@@ -18,8 +18,8 @@ class HomeController < ApplicationController
     @all_sym = 'all_inclusive'
     @mange_sym = 'edit'
     @image_types = {
-        all: 'all images',
-        home_landing: 'carousel on landing page'
+        all: 'All Images',
+        home_landing: 'Images Home'
     }
   end
 end
