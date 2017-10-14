@@ -10,7 +10,9 @@ class HomeController < ApplicationController
         ],
         row_2: [
             {title: 'Practice Hours', path: manage_path, icon: 'date-range-white-icon', info: ['6:30PM to 8:30PM', 'Every Wednesday and Friday']},
-            {title: 'Find Us At', path: manage_path, icon: 'location-white-icon', info: ['10510 5th Avenue NE, Seattle, WA 98125'], button: {text: 'Get directins'}},
+            {title: 'Find Us At', path: manage_path, icon: 'location-white-icon',
+              info: ['10510 5th Avenue NE, Seattle, WA 98125'],
+              button: {text: 'Get directions'}},
             {title: 'First Time Visit', path: manage_path, icon: 'add-people-white-icon', info: ['Make sure you read this before your first visit']},
         ]
     }

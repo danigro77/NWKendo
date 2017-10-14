@@ -42,8 +42,22 @@ footer {
   background: $kendo-blue;
   color: white;
   height: 60px;
+  font-size: 12px;
   .navbar-brand, .nav-item {
     float: left;
+  }
+  .navbar-brand {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .member-login {
+    padding: 0;
+    .navbar-brand, .nav-item {
+      float: right;
+    }
+  }
+  .info-bar {
+    padding: 0;
   }
   .nav-item {
     a {

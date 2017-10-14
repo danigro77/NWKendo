@@ -15,15 +15,19 @@
     background-size: 100px 82px;
 
   }
-  .info-row-1 {
+  &.info-row-1 {
+    background: white;
     p, div {
       font-size: 18px;
     }
   }
-  .info-row-2 {
+  &.info-row-2 {
     background: $kendo-blue;
     p, div, a {
       color: white;
+    }
+    .title {
+      font-weight: 600;
     }
     .info {
       line-height: 1em;

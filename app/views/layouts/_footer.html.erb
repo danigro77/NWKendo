@@ -1,7 +1,7 @@
 <footer class="footer">
   <div class="row">
-    <div class="col-1"></div>
-    <div class="col">
+    <div class="col-2"></div>
+    <div class="col info-bar">
       <div class="navbar-brand">
         More Information
       </div>
@@ -9,10 +9,7 @@
       <div class="nav-item"><%= link_to 'Terms of Usage', terms_path, class: 'nav-link' %></div>
       <div class="nav-item"><%= link_to 'Credits', credits_path, class: 'nav-link' %></div>
     </div>
-    <div class="col-3">
-      <div class="navbar-brand">
-        Members
-      </div>
+    <div class="col-3 member-login">
       <% unless params[:controller] == 'sessions'%>
           <% if logged_in? %>
               <div class="nav-item"><%= link_to "Log Out", login_path, class: 'nav-link' %></div>
@@ -20,7 +17,10 @@
               <div class="nav-item"><%= link_to "Log Out", logout_path, method: :delete, class: 'nav-link' %></div>
           <% end %>
       <%end%>
+      <div class="navbar-brand">
+        Members
+      </div>
     </div>
-    <div class="col-1"></div>
+    <div class="col-2"></div>
   </div>
 </footer>
