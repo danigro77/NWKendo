@@ -2,6 +2,18 @@ class HomeController < ApplicationController
   def landing
     @images = Image.where(for_page: :home_landing)
     @new_image = Image.new(for_page: :home_landing)
+    @links = {
+        row_1: [
+            {title: 'Dojo Info', path: manage_path, icon: 'dojo-icon'},
+            {title: 'Resources & FAQ', path: manage_path, icon: 'resources-icon'},
+            {title: 'Contact Us', path: manage_path, icon: 'email-icon'},
+        ],
+        row_2: [
+            {title: 'Practice Hours', path: manage_path, icon: 'date-range-white-icon', info: ['6:30PM to 8:30PM', 'Every Wednesday and Friday']},
+            {title: 'Find Us At', path: manage_path, icon: 'location-white-icon', info: ['10510 5th Avenue NE, Seattle, WA 98125'], button: {text: 'Get directins'}},
+            {title: 'First Time Visit', path: manage_path, icon: 'add-people-white-icon', info: ['Make sure you read this before your first visit']},
+        ]
+    }
   end
 
   def faq

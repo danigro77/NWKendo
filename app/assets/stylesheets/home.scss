@@ -1,16 +1,34 @@
+@import "variables";
 .short-info {
+  margin-top: 25px;
   .info-block {
     text-align: center;
   }
 
   .info-icon {
-    margin: 0 auto;
+    margin: 10px auto;
+    padding: 30px 10px;
     display: block;
     text-indent: -9999px;
     width: 100px;
     height: 90px;
     background-size: 100px 82px;
 
+  }
+  .info-row-1 {
+    p, div {
+      font-size: 18px;
+    }
+  }
+  .info-row-2 {
+    background: $kendo-blue;
+    p, div, a {
+      color: white;
+    }
+    .info {
+      line-height: 1em;
+      margin-bottom: 0;
+    }
   }
 }
 

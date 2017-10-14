@@ -1,0 +1,39 @@
+<% if images.present? && images.length == 1 %>
+    <% image = images.first %>
+    <%= image_tag image.url, class: 'front-image', alt:@image.title, title: image.description %>
+<% elsif images.present? %>
+    <div id="nwCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-inner">
+          <% images.each_with_index do |image, index| %>
+              <% klasses = 'carousel-item ' %>
+              <% klasses += 'active' if index == 0 %>
+              <div class="<%=klasses%>">
+                <%= image_tag image.url, class: 'front-image d-block w-100', alt: image.title, title: image.description %>
+              </div>
+          <%end%>
+        </div>
+      </div>
+      <% if with_nav %>
+        <a class="carousel-control-prev" href="#landingPageCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#landingPageCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      <%end%>
+    </div>
+<%else%>
+    No images added yet
+<%end%>
+
+<script>
+    $(document).ready(function(){
+        'use strict';
+
+        $('#nwCarousel').carousel({});
+
+    });
+</script>
