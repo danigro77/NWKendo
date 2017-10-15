@@ -1,24 +1,36 @@
 <div class="info-pages faq col">
-  <h4>FAQ</h4>
-  <div id="accordion" role="tablist" aria-multiselectable="true">
-    <% @questions.each_with_index do |question, index|%>
-        <div class="card">
-          <div class="card-header" role="tab" id="header-<%=index%>">
-            <h5 class="mb-0">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse-<%=index%>" aria-expanded="true" aria-controls="collapse-<%=index%>">
-                <%= question.question.capitalize %>
-                <i class="material-icons arrow-down">keyboard_arrow_down</i>
-              </a>
-            </h5>
+  <h4>Resources & FAQ</h4>
+  <hr/>
+  <% @questions.each_with_index do |question, index|%>
+    <%if question.link_to_page.present? %>
+      <%= link_to get_path(question) do%>
+        <div class="question-answer-row row">
+          <div class="col-1">
+            <i class="material-icons">question_answer</i>
           </div>
-
-          <div id="collapse-<%=index%>" class="collapse show" role="tabpanel" aria-labelledby="heading-<%=index%>">
-            <div class="card-block">
-              <%= question.answer.capitalize %>
-            </div>
+          <div class="question col-4">
+            <%= question.question %>
+          </div>
+          <div class="answer col">
+            <%= question.answer %>
           </div>
         </div>
+        <hr/>
+      <%end%>
+    <%else%>
+      <div class="question-answer-row row">
+        <div class="col-1">
+          <i class="material-icons">question_answer</i>
+        </div>
+        <div class="question col-4">
+          <%= question.question %>
+        </div>
+        <div class="answer col">
+          <%= question.answer %>
+        </div>
+      </div>
+      <hr/>
     <%end%>
-  </div>
+  <%end%>
 </div>
 

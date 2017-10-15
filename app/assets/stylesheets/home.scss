@@ -39,11 +39,9 @@
 
 .info-pages {
   &.faq {
-    .material-icons {
-      float: right;
-    }
-    .collapse.show {
-      border: 1px lightsteelblue solid;
+    .question-answer-row {
+      min-height: 40px;
+      padding: 20px;
     }
   }
 }

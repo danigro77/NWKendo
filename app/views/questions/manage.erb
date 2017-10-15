@@ -2,8 +2,8 @@
   <div class="row manage-title-row">
     <div class="col-2"></div>
     <div class="col-8 manage-titles">
-      <h3 class="manage-header">Manage Photographers</h3>
-      <h4 class="manage-subheader">for Images</h4>
+      <h3 class="manage-header">Manage Questions</h3>
+      <h4 class="manage-subheader">for FAQ</h4>
     </div>
     <div class="col-2">
       <% if @type != 'all' %>
@@ -44,7 +44,13 @@
               </div>
             </div>
             <div class="row question-content">
-              <div class="col-1"></div>
+              <div class="col-1">
+                <% if question.link_to_page.present? %>
+                    <%= link_to get_path(question), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+                        <i class="material-icons">link</i>
+                    <% end %>
+                <%end%>
+              </div>
               <div class="col answer">
                 <div class="label">Answer</div>
                 <div title="<%= question.answer %>"><%= question.answer %></div>

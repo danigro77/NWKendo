@@ -36,3 +36,10 @@ en:
       header: for the landing's page carousel
     all:
       header: in all areas
+  question:
+    link:
+      home: Home
+      first_time_visit: First Visit
+  category:
+    type:
+      resource: Resource

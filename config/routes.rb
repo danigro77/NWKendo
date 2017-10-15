@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users
   resources :images
   resources :photographers
+  resources :resources
+  resources :categories
   resources :questions, except: [:show] do
     member do
       put 'change_position/:direction', to: 'questions#change_position', as: 'change_position'
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
     get '/new_image_for/:type', to: 'images#new_image', as: 'manage_new_image'
     get 'photographers', to: 'photographers#manage', as: 'manage_photographers'
     get 'questions', to: 'questions#manage', as: 'manage_questions'
+    get 'resources', to: 'resources#manage', as: 'manage_resources'
+    get 'categories', to: 'categories#manage', as: 'manage_categories'
   end
 
   # HOME

@@ -1,0 +1,65 @@
+<div class="manage manage-resources">
+  <div class="row manage-title-row">
+    <div class="col-2"></div>
+    <div class="col-8 manage-titles">
+      <h3 class="manage-header">Manage Resources</h3>
+      <h4 class="manage-subheader">for FAQ</h4>
+    </div>
+    <div class="col-2">
+      <% if @type != 'all' %>
+          <%= link_to new_resource_path, class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
+              <i class="material-icons">add</i>
+          <%end%>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @resources.present? %>
+      <% @resources.each do |resource| %>
+        <div class="row resource-item-row">
+          <div class="col test-view">
+            <span>Test your link:</span>
+            <%= link_to resource.title, resource.url, class: "test-link", target: '_blank' %>
+          </div>
+          <div class="col-10">
+            <div class="row resource-content">
+              <div class="col-1 resource-symbol icon">
+                <i class="material-icons">link</i>
+              </div>
+              <div class="col resource-title">
+                <div class="label">Title</div>
+                <div title="<%= resource.title %>"><%= resource.title %></div>
+              </div>
+              <div class="col resource-url">
+                <div class="label">Url</div>
+                <div title="<%= resource.url %>"><%= resource.url %></div>
+              </div>
+              <div class="col-2 actions">
+                <%= link_to resource_path(resource), method: :delete, class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+                    <i class="material-icons">delete</i>
+                <% end %>
+                <%= link_to edit_resource_path(resource), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-resource"  do %>
+                    <i class="material-icons <%resource.id%>">edit</i>
+                <% end %>
+              </div>
+            </div>
+            <div class="row resource-content">
+              <div class="col-1">
+              </div>
+              <div class="col resource-description">
+                <div class="label">Description</div>
+                <div title="<%= resource.description %>"><%= resource.description %></div>
+              </div>
+              <div class="col-5 resource-category">
+                <div class="label">Category</div>
+                <div title="<%= resource.category.name %>"><%= resource.category.name %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+  <% else %>
+      <div class="col">No resources saved yet.</div>
+  <%end%>
+
+</div>

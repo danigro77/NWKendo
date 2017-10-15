@@ -53,11 +53,17 @@
 
 
       <% if image.created_at.present? %>
-          <div class="dates row">
-            <div class="date col">Created at: <%= image.created_at.strftime('%d %b %y') %></div>
-            <div class="date col">Updated at: <%= image.updated_at.strftime('%d %b %y') %></div>
-            <div class="button col"><%= f.submit 'Save', class: "image-save-button btn btn-outline-primary btn-lg"%></div>
-          </div>
+        <div class="dates row">
+          <div class="date col">Created at: <%= image.created_at.strftime('%d %b %y') %></div>
+          <div class="date col">Updated at: <%= image.updated_at.strftime('%d %b %y') %></div>
+          <div class="button col"><%= f.submit 'Save', class: "image-save-button btn btn-outline-primary btn-lg"%></div>
+        </div>
+      <%else%>
+        <div class="dates row">
+          <div class="date col">></div>
+          <div class="date col"></div>
+          <div class="button col"><%= f.submit 'Save', class: "image-save-button btn btn-outline-primary btn-lg"%></div>
+        </div>
       <%end%>
 
 

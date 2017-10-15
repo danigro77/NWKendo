@@ -2,6 +2,8 @@ class QuestionsController < ApplicationController
   before_action :get_item,   only: [:destroy, :update, :edit, :change_position]
   before_action :authorize_admin
 
+  include QuestionsHelper
+
   def manage
     @questions = Question.order(position: :asc)
   end
@@ -59,7 +61,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:question, :answer, :position)
+    params.require(:question).permit(:question, :answer, :position, :link_to_page)
   end
   def get_item
     @question = Question.find(params[:id])

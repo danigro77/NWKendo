@@ -20,11 +20,25 @@
         </div>
       </div>
 
+      <div class="form-group row">
+        <label for="question-link" class="col-2 col-form-label">Link to Page</label>
+        <%= f.select(:link_to_page, generate_link_dropdown,
+                     {include_blank: "Select a link",
+                      selected: question[:link_to_page]},
+                     { class: 'quesiton-select form-control col-5', id: 'question-link' }) %>
+      </div>
+
       <% if question.created_at.present? %>
           <div class="dates row">
             <div class="date col">Created at: <%= question.created_at.strftime('%d %b %y') %></div>
             <div class="date col">Updated at: <%= question.updated_at.strftime('%d %b %y') %></div>
             <div class="button col"><%= f.submit 'Save', class: "photographer-save-button btn btn-outline-primary btn-lg"%></div>
+          </div>
+      <%else%>
+          <div class="dates row">
+            <div class="date col"></div>
+            <div class="date col"></div>
+            <div class="button col"><%= f.submit 'Save', class: "image-save-button btn btn-outline-primary btn-lg"%></div>
           </div>
       <%end%>
   <%end%>

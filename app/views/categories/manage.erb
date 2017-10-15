@@ -1,0 +1,52 @@
+<div class="manage manage-categories">
+  <div class="row manage-title-row">
+    <div class="col-2"></div>
+    <div class="col-8 manage-titles">
+      <h3 class="manage-header">Manage Categories</h3>
+      <h4 class="manage-subheader">for Resources</h4>
+    </div>
+    <div class="col-2">
+      <% if @type != 'all' %>
+          <%= link_to new_category_path, class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
+              <i class="material-icons">add</i>
+          <%end%>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @categories.present? %>
+      <% @categories.each do |category| %>
+        <div class="row category-item-row">
+          <div class="col">
+          </div>
+          <div class="col-12">
+            <div class="row category-content">
+              <div class="col-1 category-symbol icon">
+                <i class="material-icons">bookmark_border</i>
+              </div>
+              <div class="col category-name">
+                <div class="label">Name</div>
+                <div title="<%= category.name %>"><%= category.name %></div>
+              </div>
+              <div class="col category-for-type">
+                <div class="label">For type</div>
+                <% type = category.for_type.present? ? I18n.t("category.type.#{category.for_type}") : 'n/a'%>
+                <div title="<%= type %>"><%= type %></div>
+              </div>
+              <div class="col-2 actions">
+                <%= link_to category_path(category), method: :delete, class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+                    <i class="material-icons">delete</i>
+                <% end %>
+                <%= link_to edit_category_path(category), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-category"  do %>
+                    <i class="material-icons <%category.id%>">edit</i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+  <% else %>
+      <div class="col">No categories saved yet.</div>
+  <%end%>
+
+</div>

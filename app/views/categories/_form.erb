@@ -1,0 +1,34 @@
+<div class="col">
+  <%= form_for(category) do |f| %>
+    <div class="form-group row">
+      <label for="category-name" class="col-2 col-form-label">Name</label>
+      <div class="col-12">
+        <%= f.text_field :name, class: 'form-control', id: 'category-name' %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="category-type" class="col-2 col-form-label">Category for type</label>
+      <%= f.select(:for_type, @type_list,
+                   {include_blank: "Select a type",
+                    selected: category[:for_type]},
+                   { class: 'category-type-select form-control col-5', id: 'category-type' }) %>
+    </div>
+
+
+      <% if category.created_at.present? %>
+      <div class="dates row">
+        <div class="date col">Created at: <%= category.created_at.strftime('%d %b %y') %></div>
+        <div class="date col">Updated at: <%= category.updated_at.strftime('%d %b %y') %></div>
+        <div class="button col"><%= f.submit 'Save', class: "photographer-save-button btn btn-outline-primary btn-lg"%></div>
+      </div>
+    <%else%>
+      <div class="dates row">
+        <div class="date col"></div>
+        <div class="date col"></div>
+        <div class="button col"><%= f.submit 'Save', class: "image-save-button btn btn-outline-primary btn-lg"%></div>
+      </div>
+    <%end%>
+  <%end%>
+
+</div>

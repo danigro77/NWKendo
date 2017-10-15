@@ -21,6 +21,12 @@
             <div class="date col">Updated at: <%= photographer.updated_at.strftime('%d %b %y') %></div>
             <div class="button col"><%= f.submit 'Save', class: "photographer-save-button btn btn-outline-primary btn-lg"%></div>
           </div>
+      <%else%>
+          <div class="dates row">
+            <div class="date col">></div>
+            <div class="date col"></div>
+            <div class="button col"><%= f.submit 'Save', class: "image-save-button btn btn-outline-primary btn-lg"%></div>
+          </div>
       <%end%>
 
 

@@ -1,12 +1,12 @@
 @import "mixin";
 @import "variables";
-.manage-questions {
-  .question-item-row {
+.manage-resources {
+  .resource-item-row {
     border-top: 1px $kendo-blue solid;
     &:last-of-type {
       border-bottom: 1px $kendo-blue solid;
     }
-    .question-content {
+    .resource-content {
       line-height: 40px;
       &:first-of-type {
         margin-top: 5px;
@@ -31,9 +31,16 @@
     text-align: right;
     padding: 0;
   }
+  .test-view {
+    padding: 10px;
+    a {
+      color: darkblue;
+      text-decoration: underline;
+      margin-left: 10px;
+    }
+  }
 }
-
-.question-form {
+.resource-form {
   .position, label {
     text-align: left;
   }
