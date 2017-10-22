@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     @links = {
         row_1: [
             {title: 'Dojo Info', path: manage_path, icon: 'dojo-icon'},
-            {title: 'Resources & FAQ', path: manage_path, icon: 'resources-icon'},
+            {title: 'Resources & FAQ', path: faq_path, icon: 'resources-icon'},
             {title: 'Contact Us', path: 'mailto:daniela@email.com', icon: 'email-icon'},
         ],
         row_2: [
@@ -23,9 +23,12 @@ class HomeController < ApplicationController
   end
 
   def faq
-    categories = Category.where(for_type: 'resource')
-    @resources = Resource.all.group(categories)
-    @questions = Question.order(position: :asc)
+    @categories = Category.all.where(for_type: 'resource')
+    @resources = {}
+    @categories.each do |cat|
+      @resources[cat.id] = Resource.where(category: cat)
+    end
+    @questions = Question.all.order(position: :asc)
   end
   def credits
   end

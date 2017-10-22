@@ -3,5 +3,11 @@ $(document).ready(function(){
 
     $('#nwCarousel').carousel({});
 
-    $('.collapse').collapse()
+    $('.collapse').collapse();
+
+    $('#nw-tabs a:active').tab('show');
+    $('.nav-link').on('click', function (event) {
+        $('.active').removeClass('active');
+        console.log(this.href)
+    });
 });

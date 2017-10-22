@@ -51,3 +51,24 @@
     margin: 0 16px;
   }
 }
+
+.info-pages.faq {
+  .resources-view {
+    margin-bottom: 30px;
+    .resource-link, .resource-description {
+      float: left;
+      text-align: left;
+      font-size: 14px;
+    }
+    .resource-link {
+      width: 30%;
+      font-weight: 600;
+    }
+    .resource-description {
+      font-weight: 400;
+      &:visited {
+        color: $font-color-body;
+      }
+    }
+  }
+}

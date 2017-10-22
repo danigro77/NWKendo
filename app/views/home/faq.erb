@@ -1,5 +1,41 @@
 <div class="info-pages faq col">
-  <h4>Resources & FAQ</h4>
+  <div class="row"><h4>Resources & FAQ</h4></div>
+
+  <div class="card text-center resources-view">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs" id="nw-tabs">
+        <%@categories.each_with_index do |category, idx|%>
+          <li class="nav-item">
+            <a  class="nav-link <%= idx == 0 ? 'active' : ''%>"
+                data-toggle="tab"
+                role="tab"
+                aria-controls="<%= category.id %>-tab"
+                href="#<%= category.id %>-tab">
+              <%=category.name%>
+            </a>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+
+    <%@resources.each_with_index do |(category_id, resources), idx|%>
+        <%resources.each do |resource|%>
+            <div class="card-block tab-pane <%= idx == 0 ? 'active' : ''%>"
+                 id="<%= category_id %>-tab"
+                 role="tabpanel"
+            >
+              <% url = resource.url.match(/^https?:\/\//) ? resource.url : "http://#{resource.url}"%>
+              <div class="resource-link-block">
+                <%= link_to url, target: '_blank' do %>
+                    <div class="resource-link"><%=resource.title%></div>
+                    <div class="resource-description"><%= resource.description%></div>
+                <%end%>
+              </div>
+            </div>
+        <%end%>
+    <%end%>
+  </div>
+
   <hr/>
   <% @questions.each_with_index do |question, index|%>
     <%if question.link_to_page.present? %>

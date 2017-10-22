@@ -1,0 +1,13 @@
+@import "variables";
+.tab-pane {
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+}
+
+.nav-tabs {
+  .nav-link.active {
+    border-color: $kendo-blue;
+  }
+}

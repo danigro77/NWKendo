@@ -1,24 +1,12 @@
-# README
+# NW Kendo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby 2.4.1
 
-Things you may want to cover:
+Rails 5
 
-* Ruby version
+Bootstrap 4
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Getting started
+1. Get RVM
+2. Get Ruby 2.4.1
+3.

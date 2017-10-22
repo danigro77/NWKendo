@@ -39,7 +39,6 @@ gem 'acts_as_list'
 gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'jquery-rails', '~> 4.0', '>= 4.0.5'
 gem 'popper_js', '~> 1.11', '>= 1.11.1'
-gem 'material_design_lite-rails', '~> 1.3'
 gem 'bootstrap', '~> 4.0.0.beta'
 
 gem 'erubis', '~> 2.7'
