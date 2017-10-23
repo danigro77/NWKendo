@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get '/faq', to: 'home#faq', as: 'faq'
   get '/credits', to: 'home#credits', as: 'credits'
   get '/terms', to: 'home#terms', as: 'terms'
+  get '/map', to: 'home#map', as: 'map'
 
 
   # SESSION

@@ -14,9 +14,11 @@
 //= require jquery
 //= require jquery_ujs
 
+//= require underscore
+//= require gmaps/google
+
 //= require popper
 //= require turbolinks
 //= require bootstrap
 
-//= require material
 //= require_tree .

@@ -1,0 +1,35 @@
+<div class="info-pages map col">
+  <div class="row"><h4>Location & Schedule</h4></div>
+
+  <div class="row info-row">
+    <div class="col">
+      <div class="address-location"><%= @address[:locations] %></div>
+      <div class="address-street"><%= @address[:street] %></div>
+      <div class="address-city"><%= @address[:city] %></div>
+    </div>
+    <div class="col">
+      <div class="schedule-days"><%= @schedule[:days] %></div>
+      <div class="schedule-times"><%= @schedule[:times] %></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="one_marker" style='width: 100%; height: 400px;'></div>
+  </div>
+</div>
+
+
+<script>
+    $(function () {
+        var handler, markers;
+        handler = Gmaps.build('Google');
+        handler.buildMap({
+            internal: {id: 'one_marker'}
+        }, function(){
+            markers = handler.addMarkers(<%=raw @hash.to_json %>);
+            handler.map.centerOn(markers[0]);
+            handler.getMap().setZoom(15);
+        });
+
+    });
+</script>

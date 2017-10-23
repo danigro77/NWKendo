@@ -1,3 +1,13 @@
 .info-pages {
-
+  &.map {
+    .info-row {
+      margin: 30px 0;
+      div {
+        text-align: center;
+        &.address-location {
+          font-weight: 600;
+        }
+      }
+    }
+  }
 }

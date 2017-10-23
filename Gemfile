@@ -41,6 +41,9 @@ gem 'jquery-rails', '~> 4.0', '>= 4.0.5'
 gem 'popper_js', '~> 1.11', '>= 1.11.1'
 gem 'bootstrap', '~> 4.0.0.beta'
 
+gem 'gmaps4rails'
+gem 'underscore-rails'
+
 gem 'erubis', '~> 2.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
