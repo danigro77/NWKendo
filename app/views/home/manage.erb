@@ -26,7 +26,6 @@
         </ul>
         <div class="card-block"></div>
       </div>
-
     </div>
 
     <div class="col">
@@ -53,7 +52,22 @@
         <div class="card-block"></div>
       </div>
     </div>
-    <div class="col"></div>
+    <div class="col">er
+      <div class="card" id="us">
+        <%= image_tag 'https://farm5.staticflickr.com/4428/36041634483_cfd6233ad0_k.jpg', alt: 'Manage user', class: 'card-img-top'%>
+        <div class="card-block">
+          <h4 class="card-title">Manage users</h4>
+          <p class="card-text highlight-card-text">User</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i class="material-icons"><%=@all_sym%></i>
+            <%= link_to 'All Users', manage_users_path %>
+          </li>
+        </ul>
+        <div class="card-block"></div>
+      </div>
+    </div>
 
   </div>
 </div>

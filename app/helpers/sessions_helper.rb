@@ -5,15 +5,16 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= User.get_user(session[:user_id])
+    user = @current_user ? @current_user : session[:user_id] ? User.get_user(session[:user_id]) : nil
+    @current_user = user
   end
 
   def current_admin
-    current_user && current_user.is_admin
+    session[:user_id] && current_user && current_user.is_admin
   end
 
   def logged_in?
-    !current_user.nil?
+    current_user.present?
   end
 
   def log_out

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'questions', to: 'questions#manage', as: 'manage_questions'
     get 'resources', to: 'resources#manage', as: 'manage_resources'
     get 'categories', to: 'categories#manage', as: 'manage_categories'
+    get 'users', to: 'users#manage', as: 'manage_users'
   end
 
   # HOME
@@ -34,5 +35,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

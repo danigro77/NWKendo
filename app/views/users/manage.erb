@@ -1,0 +1,60 @@
+<div class="manage manage-users">
+  <div class="row manage-title-row">
+    <div class="col-2"></div>
+    <div class="col-8 manage-titles">
+      <h3 class="manage-header">Manage User</h3>
+      <h4 class="manage-subheader"></h4>
+    </div>
+    <div class="col-2">
+      <% if @type != 'all' %>
+          <%= link_to new_user_path, class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
+              <i class="material-icons">add</i>
+          <%end%>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @users.present? %>
+      <% @users.each do |user| %>
+          <div class="row user-item-row">
+            <div class="col test-view">
+              <span>Mail to:</span>
+              <%= mail_to user.email, class: "test-link" do %>
+                  <i class="material-icons <%user.id%>">email</i>
+              <%end%>
+            </div>
+            <div class="col">
+              <div class="row user-content">
+                <div class="col-1 user-symbol icon">
+                  <i class="material-icons">face</i>
+                </div>
+
+                <div class="col user-url">
+                  <div class="label">Email</div>
+                  <div title="<%= user.email %>"><%= user.email %></div>
+                </div>
+                <div class="col user-admin">
+                  <div class="label">Is Admin?</div>
+                  <div>
+                    <% if user.is_admin %>
+                        <i class="material-icons <%user.id%>">check</i>
+                    <%end%>
+                  </div>
+                </div>
+                <div class="col-2 actions">
+                  <%= link_to user_path(user), method: :delete, class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+                      <i class="material-icons">delete</i>
+                  <% end %>
+                  <%= link_to edit_user_path(user), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-user"  do %>
+                      <i class="material-icons <%user.id%>">edit</i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+      <%end%>
+  <% else %>
+      <div class="col">No users saved yet.</div>
+  <%end%>
+
+</div>
