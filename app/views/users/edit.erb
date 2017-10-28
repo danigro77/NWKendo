@@ -1,0 +1,9 @@
+<h1>Edit user</h1>
+
+<%= form_for @user do |f| %>
+
+    Email: <%= f.text_field :email %>
+    Admin: <%= f.check_box :is_admin, {}, true, false %>
+    <%= f.submit "Submit" %>
+
+<% end %>

@@ -40,7 +40,7 @@ gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'jquery-rails', '~> 4.0', '>= 4.0.5'
 gem 'popper_js', '~> 1.11', '>= 1.11.1'
 gem 'material_design_lite-rails', '~> 1.3' #for buttons and icons
-gem 'bootstrap', '~> 4.0.0.beta'
+gem 'bootstrap', '4.0.0.beta2.1 '
 
 gem 'gmaps4rails'
 gem 'underscore-rails'

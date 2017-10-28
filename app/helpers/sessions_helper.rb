@@ -9,10 +9,6 @@ module SessionsHelper
     @current_user = user
   end
 
-  def current_admin
-    session[:user_id] && current_user && current_user.is_admin
-  end
-
   def logged_in?
     current_user.present?
   end

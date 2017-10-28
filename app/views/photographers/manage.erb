@@ -16,7 +16,7 @@
 
   <% if @photographers.present? %>
     <% @photographers.each do |photographer| %>
-      <div class="row photographer-item-row">
+      <div class="row photographer-item-row item-row">
         <div class="col-4 preview">
           <% image = photographer.images.first %>
           <% if image %>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="col-8">
-          <div class="row photographer-content">
+          <div class="row photographer-content row-content">
             <div class="col-1 photographer-initials">
               <div title="<%= photographer.full_name %>"><%= photographer.initials %></div>
             </div>
@@ -44,7 +44,7 @@
               <% end %>
             </div>
           </div>
-          <div class="row photographer-content">
+          <div class="row photographer-content row-content">
             <div class="col-1"></div>
             <div class="col photographer">
               <div class="label">Contact Email</div>

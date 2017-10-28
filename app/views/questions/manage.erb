@@ -16,7 +16,7 @@
 
   <% if @questions.present? %>
       <% @questions.each do |question| %>
-        <div class="row question-item-row">
+        <div class="row question-item-row item-row">
           <div class="col position icon">
             <%= link_to change_position_question_path(question, 'up'), method: :put, disabled: question == @questions[0], class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
                 <i class="material-icons">arrow_upward</i>
@@ -26,7 +26,7 @@
             <% end %>
           </div>
           <div class="col-10">
-            <div class="row question-content">
+            <div class="row question-content row-content">
               <div class="col-1 question-symbol icon">
                 <i class="material-icons">question_answer</i>
               </div>
@@ -43,7 +43,7 @@
                 <% end %>
               </div>
             </div>
-            <div class="row question-content">
+            <div class="row question-content row-content">
               <div class="col-1">
                 <% if question.link_to_page.present? %>
                     <%= link_to get_path(question), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>

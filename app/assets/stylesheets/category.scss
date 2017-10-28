@@ -1,36 +1,7 @@
 @import "mixin";
 @import "variables";
 .manage-categories {
-  .category-item-row {
-    border-top: 1px $kendo-blue solid;
-    &:last-of-type {
-      border-bottom: 1px $kendo-blue solid;
-    }
-    .category-content {
-      line-height: 40px;
-      &:first-of-type {
-        margin-top: 5px;
-      }
-    }
-  }
-  .icon {
-    margin-top: 7px;
-  }
-  .label, .item {
-    float: left;
-  }
-  .label {
-    font-weight: 600;
-    width: 100px;
-  }
-  .item {
-    width: 80%;
 
-  }
-  .actions {
-    text-align: right;
-    padding: 0;
-  }
 }
 .category-form {
   .position, label {

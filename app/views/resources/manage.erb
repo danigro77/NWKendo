@@ -16,13 +16,13 @@
 
   <% if @resources.present? %>
       <% @resources.each do |resource| %>
-        <div class="row resource-item-row">
+        <div class="row resource-item-row item-row">
           <div class="col test-view">
             <span>Test your link:</span>
             <%= link_to resource.title, resource.url, class: "test-link", target: '_blank' %>
           </div>
           <div class="col-10">
-            <div class="row resource-content">
+            <div class="row resource-content row-content">
               <div class="col-1 resource-symbol icon">
                 <i class="material-icons">link</i>
               </div>
@@ -43,7 +43,7 @@
                 <% end %>
               </div>
             </div>
-            <div class="row resource-content">
+            <div class="row resource-content row-content">
               <div class="col-1">
               </div>
               <div class="col resource-description">

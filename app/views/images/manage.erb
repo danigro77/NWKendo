@@ -17,12 +17,12 @@
   <% if @images.present? %>
       <% @images.each do |image| %>
           <% url = image.url %>
-          <div class="row image-item-row">
+          <div class="row image-item-row item-row">
             <div class="col preview">
               <%= image_tag url, {alt: image.title, title: image.description, class: 'preview-img'} %>
             </div>
             <div class="col-8">
-              <div class="row image-content">
+              <div class="row image-content row-content">
                 <div class="col-1 icon">
                   <i class="material-icons" title="<%= image.for_page %>"><%= image.for_page %></i>
                 </div>
@@ -40,7 +40,7 @@
                   <% end %>
                 </div>
               </div>
-              <div class="row image-content">
+              <div class="row image-content row-content">
                 <div class="col-1 photographer">
                   <% initials = image.photographer ? image.photographer.initials : 'n/a' %>
                   <div title="<%= image.photographer.full_name %>"><%= initials %></div>
@@ -50,7 +50,7 @@
                   <div class="item" title="<%= url %>"><%= url %></div>
                 </div>
               </div>
-              <div class="row image-content">
+              <div class="row image-content row-content">
                 <div class="col-1"></div>
                 <div class="col description">
                   <div class="label">Description</div>

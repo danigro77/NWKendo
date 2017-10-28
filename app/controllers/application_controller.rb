@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def authorize_admin
-    redirect_to :back, status: 401 unless current_admin
+    redirect_to root_path, status: 401 unless current_user && current_user.is_admin
   end
 end

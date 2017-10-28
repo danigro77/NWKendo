@@ -6,38 +6,34 @@
       <h4 class="manage-subheader"></h4>
     </div>
     <div class="col-2">
-      <% if @type != 'all' %>
-          <%= link_to new_user_path, class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
-              <i class="material-icons">add</i>
-          <%end%>
-      <% end %>
+      <%= link_to new_user_path, class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
+          <i class="material-icons">add</i>
+      <%end%>
     </div>
   </div>
 
   <% if @users.present? %>
       <% @users.each do |user| %>
-          <div class="row user-item-row">
-            <div class="col test-view">
-              <span>Mail to:</span>
+          <div class="row user-item-row item-row">
+            <div class="col-2 test-view icon">
               <%= mail_to user.email, class: "test-link" do %>
                   <i class="material-icons <%user.id%>">email</i>
               <%end%>
             </div>
             <div class="col">
-              <div class="row user-content">
+              <div class="row user-content row-content">
                 <div class="col-1 user-symbol icon">
                   <i class="material-icons">face</i>
                 </div>
 
-                <div class="col user-url">
+                <div class="col-8 user-url">
                   <div class="label">Email</div>
                   <div title="<%= user.email %>"><%= user.email %></div>
                 </div>
                 <div class="col user-admin">
-                  <div class="label">Is Admin?</div>
-                  <div>
+                  <div class="icon">
                     <% if user.is_admin %>
-                        <i class="material-icons <%user.id%>">check</i>
+                        <i title='Admin user' class="material-icons admin-icon">account_box</i>
                     <%end%>
                   </div>
                 </div>

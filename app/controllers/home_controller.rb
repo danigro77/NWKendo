@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   include QuestionsHelper
+  before_action :authorize_admin, only: [:manage]
 
   def landing
     @images = Image.where(for_page: :home_landing)

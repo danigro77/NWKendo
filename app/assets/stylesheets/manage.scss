@@ -16,4 +16,46 @@
   .list-group {
     margin-left: 20px;
   }
+  .manage-title-row {
+    text-align: center;
+    background: $kendo-blue;
+    color: white;
+    min-height: 124px;
+
+    .add-button {
+      margin-top: 40px;
+      background: lightgray;
+      color: $kendo-blue;
+    }
+  }
+  .icon {
+    margin-top: 7px;
+  }
+  .label, .item {
+    float: left;
+  }
+  .label {
+    font-weight: 600;
+    width: 100px;
+  }
+  .item {
+    width: 80%;
+
+  }
+  .actions {
+    text-align: right;
+    padding: 0;
+  }
+  .item-row {
+    border-top: 1px $kendo-blue solid;
+    &:last-of-type {
+      border-bottom: 1px $kendo-blue solid;
+    }
+    .row-content {
+      line-height: 40px;
+      &:first-of-type {
+        margin-top: 5px;
+      }
+    }
+  }
 }

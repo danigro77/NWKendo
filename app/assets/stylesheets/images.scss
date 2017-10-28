@@ -2,41 +2,11 @@
 @import "variables";
 
 .manage-images {
-  .image-item-row {
-    border-top: 1px lightgray solid;
-    &:last-of-type {
-      border-bottom: 1px lightgray solid;
-    }
-    .image-content {
-      line-height: 40px;
-      &:first-of-type {
-        margin-top: 5px;
-      }
-    }
-  }
   .preview {
     padding: 0;
     img {
       width: 100%;
     }
-  }
-  .icon {
-    margin-top: 7px;
-  }
-  .label, .item {
-    float: left;
-  }
-  .label {
-    font-weight: 600;
-    width: 100px;
-  }
-  .item {
-    width: 80%;
-
-  }
-  .actions {
-    text-align: right;
-    padding: 0;
   }
 }
 
