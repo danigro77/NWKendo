@@ -27,5 +27,8 @@ module NWKendo
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    Dir.glob("#{Rails.root}/app/assets/images/**/").each do |path|
+      config.assets.paths << path
+    end
   end
 end
