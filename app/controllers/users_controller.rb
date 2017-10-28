@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       # session[:user_id] = user.id #TODO: undo when user are allowed to log-in and admin cannot create new user
-      redirect_to manage_path
+      redirect_to manage_users_path
     else
       flash[:alert] = "Could not create user"
       render :new
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   def update
     @user.is_admin = params[:is_admin] == 'true'
     if @user.update(user_params)
+      flash[:notice] = "User was updated"
       redirect_to manage_users_path
     else
       flash[:alert] = "Could not update user"

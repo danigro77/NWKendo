@@ -1,10 +1,29 @@
-<h1>Create new user</h1>
+<div class="col">
+  <div class="row"><h1>Create new user</h1></div>
+  <%= form_for :user, url: '/users' do |f| %>
+    <div class="form-group row">
+      <label for="user-email" class="col-2 col-form-label">Email</label>
+      <div class="col-12">
+        <%= f.text_field :email, class: 'form-control', id: 'user-email' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="user-password" class="col-2 col-form-label">Password</label>
+      <div class="col-12">
+        <%= f.password_field :password, class: 'form-control', id: 'user-password' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="user-password-confirmation" class="col-2 col-form-label">Password Confirmation</label>
+      <div class="col-12">
+        <%= f.password_field :password_confirmation, class: 'form-control', id: 'user-password-confirmation' %>
+      </div>
+    </div>
 
-<%= form_for :user, url: '/users' do |f| %>
-
-    Email: <%= f.text_field :email %>
-    Password: <%= f.password_field :password %>
-    Password Confirmation: <%= f.password_field :password_confirmation %>
-    <%= f.submit "Submit" %>
-
-<% end %>
+    <div class="dates row">
+      <div class="date col"></div>
+      <div class="date col"></div>
+      <div class="button col"><%= f.submit 'Save', class: "user-save-button btn btn-outline-primary btn-lg"%></div>
+    </div>
+  <% end %>
+</div>
