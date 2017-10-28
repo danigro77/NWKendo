@@ -33,7 +33,7 @@
         <%= f.select(:photographer_id, Photographer.all.collect {|p| [ p.full_name, p.id ] },
                      {include_blank: "Select a photographer",
                       selected: image && image.photographer ? image.photographer.id : nil},
-                     { class: 'image-select form-control col-9', id: 'image-photographer' }) %>
+                     { class: 'image-select form-control col-7', id: 'image-photographer' }) %>
         <div class="col-2">
           <span class="input-group">
             <span class="input-group-btn">
@@ -45,7 +45,7 @@
 
 
       <div class="form-group row">
-        <label for="image-title" class="col-2 col-form-label">Description</label>
+        <label for="image-description" class="col-2 col-form-label">Description</label>
         <div class="col-12">
           <%= f.text_area :description, class: 'form-control', rows: "3", id:"image-description" %>
         </div>
@@ -60,7 +60,9 @@
         </div>
       <%else%>
         <div class="dates row">
-          <div class="date col">></div>
+          <div class="date col">
+            <div class="form-group"><%= f.text_field :for_page, class: 'hide', value: image.for_page %></div>
+          </div>
           <div class="date col"></div>
           <div class="button col"><%= f.submit 'Save', class: "image-save-button btn btn-outline-primary btn-lg"%></div>
         </div>
