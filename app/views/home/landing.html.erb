@@ -1,29 +1,4 @@
 <dev class="landing-page">
   <%= render :partial => "layouts/image_carousel", :locals => { images: @images, with_nav: false } %>
-
-  <% [:row_1, :row_2].each do |row| %>
-      <% row_klasses =  'row short-info' %>
-      <% row_klasses += row == :row_1 ? ' info-row-1' : ' info-row-2' %>
-      <div class="<%= row_klasses %>">
-        <% @links[row].each do |link| %>
-            <div class="col-4 info-block">
-              <%= link_to link[:path] do %>
-                  <div class="info-box">
-                    <% icon_klass = link[:icon] + ' info-icon svg-icon' %>
-                    <div class="<%=icon_klass%>"></div>
-                    <p class="title"><%= link[:title] %></p>
-                    <% if link[:info] %>
-                        <% link[:info].each do |info|%>
-                            <p class="info"><%=info%></p>
-                        <%end%>
-                    <%end%>
-                    <% if link[:button] %>
-                        <%= link_to link[:button][:text], '#' %>
-                    <%end%>
-                  </div>
-              <% end %>
-            </div>
-        <%end%>
-      </div>
-  <%end%>
+  <%= render :partial => "layouts/body_links" %>
 </dev>

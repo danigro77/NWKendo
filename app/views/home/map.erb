@@ -1,15 +1,15 @@
 <div class="info-pages map col">
-  <div class="row"><h4>Location & Schedule</h4></div>
+  <div class="row"><h4>Location</h4></div>
 
   <div class="row info-row">
     <div class="col">
-      <div class="address-location"><%= @address[:locations] %></div>
-      <div class="address-street"><%= @address[:street] %></div>
-      <div class="address-city"><%= @address[:city] %></div>
+      <div class="address-location"><%= location_schedule[:address][:locations] %></div>
+      <div class="address-street"><%= location_schedule[:address][:street] %></div>
+      <div class="address-city"><%= location_schedule[:address][:city] %></div>
     </div>
     <div class="col">
-      <div class="schedule-days"><%= @schedule[:days] %></div>
-      <div class="schedule-times"><%= @schedule[:times] %></div>
+      <div class="schedule-days"><%= location_schedule[:schedule][:days] %></div>
+      <div class="schedule-times"><%= location_schedule[:schedule][:times] %></div>
     </div>
   </div>
 

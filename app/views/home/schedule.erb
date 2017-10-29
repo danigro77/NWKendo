@@ -1,0 +1,19 @@
+<div class="info-pages schedule col">
+  <div class="row"><h4>Schedule</h4></div>
+
+  <div class="row info-row">
+    <div class="col">
+      <div class="schedule-days"><%= location_schedule[:schedule][:days] %></div>
+      <div class="schedule-times"><%= location_schedule[:schedule][:times] %></div>
+    </div>
+    <div class="col">
+      <div class="address-location"><%= location_schedule[:address][:locations] %></div>
+      <div class="address-street"><%= location_schedule[:address][:street] %></div>
+      <div class="address-city"><%= location_schedule[:address][:city] %></div>
+    </div>
+  </div>
+
+  <%= render :partial => "layouts/image_carousel", :locals => { images: @images, with_nav: false } %>
+
+</div>
+

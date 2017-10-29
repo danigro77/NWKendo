@@ -1,7 +1,7 @@
-<div class="row">
+<div class="row image-row">
   <% if images.present? && images.length == 1 %>
       <% image = images.first %>
-      <%= image_tag image.url, class: 'front-image', alt:@image.title, title: image.description %>
+      <%= image_tag image.url, class: 'front-image', alt:image.title, title: image.description %>
   <% elsif images.present? %>
       <div id="nwCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">

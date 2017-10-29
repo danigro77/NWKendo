@@ -4,7 +4,8 @@ class ImagesController < ApplicationController
 
   SYMB = {
       all: 'all_inclusive',
-      home_landing: 'home'
+      home_landing: 'home',
+      schedule: 'date_range',
   }
 
   def manage
