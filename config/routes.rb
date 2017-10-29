@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :images
   resources :photographers
   resources :resources
+  resources :meetings
   resources :categories
   resources :questions, except: [:show] do
     member do
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
     get 'resources', to: 'resources#manage', as: 'manage_resources'
     get 'categories', to: 'categories#manage', as: 'manage_categories'
     get 'users', to: 'users#manage', as: 'manage_users'
+    get 'meetings', to: 'meetings#manage', as: 'manage_meetings'
   end
 
   # HOME
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
   get '/credits', to: 'home#credits', as: 'credits'
   get '/terms', to: 'home#terms', as: 'terms'
   get '/map', to: 'home#map', as: 'map'
-  get '/schedule', to: 'home#schedule', as: 'schedule'
+  get '/schedule/:date', to: 'home#schedule', as: 'schedule'
 
 
   # SESSION

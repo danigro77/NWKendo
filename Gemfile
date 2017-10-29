@@ -44,6 +44,8 @@ gem 'bootstrap', '4.0.0.beta2.1 '
 
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'momentjs-rails'
 
 gem 'erubis', '~> 2.7'
 # Use Capistrano for deployment

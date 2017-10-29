@@ -20,6 +20,7 @@
 //= require popper
 //= require turbolinks
 //= require bootstrap
+//= require moment
 
 //= require material
 //= require_tree .

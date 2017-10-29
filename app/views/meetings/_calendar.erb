@@ -1,0 +1,65 @@
+<div class="row" id="calendar" style="padding-top: 100px">
+  <div class="col-3">
+    <div class="legend">
+      <div class="multi-day-event legend-color-field"></div>
+      <div class="legend-description">Multi-days event</div>
+    </div>
+  </div>
+  <div class="col-6 text-center">
+    <div class="well controls">
+      <%= link_to "#{schedule_path(date - 1.month)}#calendar", class: "btn btn-default prev-month" do %>
+          <i class="material-icons">keyboard_arrow_left</i>
+      <% end %>
+      <%= "#{date.strftime("%B")} #{date.year}" %>
+      <%= link_to "#{schedule_path(date + 1.month)}#calendar", class: "btn btn-default next-month" do %>
+          <i class="material-icons">keyboard_arrow_right</i>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="col-3 text-right">
+    <%= link_to 'Current Month', "#{schedule_path(Date.current)}#calendar", class: "btn btn-outline-primary this-month" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <%= calendar date do |date| %>
+        <%= date.day %>
+        <% if meetings_by_day[date] %>
+            <ul class="calendar-day-content">
+              <% meetings_by_day[date].each do |event| %>
+                  <li>
+                    <% klasses = %w(btn btn-outline-primary)%>
+                    <% klasses << 'multi-day-event' if event.start_time.day != event.end_time.day%>
+                    <button type="button" class="<%=klasses.join(' ')%>" data-toggle="modal" data-target="#eventModal" data-item="<%=event.to_json%>">
+                      <%= event.name %>
+                    </button>
+                  </li>
+              <% end %>
+            </ul>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!--Modal-->
+
+<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><span class="modal-event-name"></span></h5>
+      </div>
+      <div class="modal-body">
+        <p><span class="modal-event-start-date modal-event-date"></span><span class="modal-event-start-time modal-event-time"></span></p>
+        <p><span class="modal-event-end-date modal-event-date"></span><span class="modal-event-end-time modal-event-time"></span></p>
+        <p><span class="modal-event-location"></span></p>
+        <p><span class="modal-event-description"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

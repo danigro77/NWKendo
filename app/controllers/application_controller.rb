@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   def authorize_admin
-    redirect_to root_path, status: 401 unless current_user && current_user.is_admin
+    redirect_to root_path, status: 401 unless current_user&.is_admin
   end
 end

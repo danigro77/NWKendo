@@ -1,0 +1,100 @@
+@import "variables";
+
+.calendar {
+  .today {
+    background: $kendo-blue-light;
+    .calendar-day-content {
+      button {
+        background: white;
+        &:hover {
+          background: lightgray;
+        }
+      }
+    }
+  }
+
+  .past-events {
+    button {
+      border-color: $kendo-blue-light;
+      color: $kendo-blue-light;
+      &:hover {
+        color: $kendo-blue-light;
+        border-color: $kendo-blue-light;
+      }
+    }
+  }
+
+  .not-month {
+    color: lightgray;
+  }
+  .calendar-week {
+    height: 100px;
+    td {
+      width: 14%;
+    }
+  }
+  .calendar-day-content {
+    overflow-y: scroll;
+    height: 70px;
+    margin-bottom: 0;
+    padding-left: 0;
+    li {
+      list-style: none;
+      margin-left: 0;
+      button {
+        width: 100%;
+        margin-bottom: 2px;
+        &.multi-day-event {
+          border-color: $highlight-color;
+          color: $highlight-color;
+          background: lighten($highlight-color, 70);
+          &:hover {
+            background: lighten($highlight-color, 60);
+          }
+        }
+      }
+    }
+  }
+}
+#calendar {
+  .legend {
+    border: $kendo-blue-light 1px solid;
+    border-radius: 2px;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    maring-top: -10px;
+    .legend-color-field {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      &.multi-day-event {
+        font-size: 10px;
+        border: $highlight-color 1px solid;
+        border-radius: 2px;
+        color: $highlight-color;
+        background: lighten($highlight-color, 70);
+      }
+    }
+    .legend-description {
+      display: inline-block;
+    }
+  }
+}
+
+#eventModal {
+  .modal-header {
+    background: url("https://farm5.staticflickr.com/4410/36024248404_0cc248e22a_k.jpg");
+    background-position: center;
+    background-size: 100%;
+    color: white;
+  }
+  .modal-event-date {
+    width: 40%;
+    display: inline-block;
+  }
+  .highlight-event-description {
+    border: $kendo-blue-light 1px solid;
+    border-radius: 2px;
+    padding: 20px;
+  }
+}

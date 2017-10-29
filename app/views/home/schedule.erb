@@ -14,6 +14,7 @@
   </div>
 
   <%= render :partial => "layouts/image_carousel", :locals => { images: @images, with_nav: false } %>
+  <%= render :partial => "meetings/calendar", :locals => { date: @date, meetings_by_day: @meetings_by_day } %>
 
 </div>
 

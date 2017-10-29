@@ -32,8 +32,8 @@
       <div class="card" id="footer">
         <%= image_tag 'footer.jpg', alt: 'Manage media', class: 'card-img-top'%>
         <div class="card-block">
-          <h4 class="card-title">Manage footer content</h4>
-          <p class="card-text highlight-card-text">Frequently asked questions</p>
+          <h4 class="card-title">Manage Page Content</h4>
+          <p class="card-text highlight-card-text">FAQ and Resource Links</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
@@ -44,19 +44,26 @@
             <i class="material-icons">link</i>
             <%= link_to 'All Resources', manage_resources_path %>
           </li>
+        </ul>
+        <div class="card-block">
+          <p class="card-text highlight-card-text">Categories (Tabs)</p>
+        </div>
+        <ul class="list-group list-group-flush">
           <li class="list-group-item">
             <i class="material-icons"><%=@all_sym%></i>
-            <%= link_to 'All Resource Categories', manage_categories_path %>
+            <%= link_to 'All Categories', manage_categories_path %>
           </li>
         </ul>
-        <div class="card-block"></div>
       </div>
     </div>
-    <div class="col">er
-      <div class="card" id="us">
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card" id="user">
         <%= image_tag 'https://farm5.staticflickr.com/4428/36041634483_cfd6233ad0_k.jpg', alt: 'Manage user', class: 'card-img-top'%>
         <div class="card-block">
-          <h4 class="card-title">Manage users</h4>
+          <h4 class="card-title">Manage Social</h4>
           <p class="card-text highlight-card-text">User</p>
         </div>
         <ul class="list-group list-group-flush">
@@ -65,9 +72,16 @@
             <%= link_to 'All Users', manage_users_path %>
           </li>
         </ul>
-        <div class="card-block"></div>
+        <div class="card-block">
+          <p class="card-text highlight-card-text">Events and Meetings</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i class="material-icons"><%=@all_sym%></i>
+            <%= link_to 'All Meetings', manage_meetings_path %>
+          </li>
+        </ul>
       </div>
     </div>
-
   </div>
 </div>

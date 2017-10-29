@@ -30,5 +30,7 @@ module NWKendo
     Dir.glob("#{Rails.root}/app/assets/images/**/").each do |path|
       config.assets.paths << path
     end
+
+    config.time_zone = 'Pacific Time (US & Canada)'
   end
 end

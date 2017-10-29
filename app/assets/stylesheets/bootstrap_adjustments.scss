@@ -11,3 +11,19 @@
     border-color: $kendo-blue;
   }
 }
+
+.btn {
+  &.primary {
+    background: $kendo-blue;
+    color: white;
+  }
+  &.btn-outline-primary {
+    background: white;
+    color: $kendo-blue;
+    border: $kendo-blue solid 1px;
+    &:hover, &:active, &:visited {
+      color: $kendo-blue;
+      border-color: $kendo-blue;
+    }
+  }
+}

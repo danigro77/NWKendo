@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   include QuestionsHelper
+  include CalendarHelper
   before_action :authorize_admin, only: [:manage]
 
   def landing
@@ -29,7 +30,11 @@ class HomeController < ApplicationController
   end
 
   def schedule
-    @images = Image.where(for_page: :schedule)
+    @images = Image.all.where(for_page: :schedule)
+    @meetings_by_day = Meeting.all.group_by{ |meeting|
+      meeting.start_time.to_date
+    }
+    @date = Date.parse(params[:date])
   end
 
   def manage
