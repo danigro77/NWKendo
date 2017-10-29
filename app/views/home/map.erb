@@ -1,4 +1,4 @@
-<div class="info-pages map col">
+<div class="info-pages col" id="map">
   <div class="row"><h4>Location</h4></div>
 
   <div class="row info-row">
@@ -18,9 +18,9 @@
   </div>
 </div>
 
-
+<!-- TODO: this is broken - see more in application.erb-->
 <script>
-    $(function () {
+    $(function() {
         var handler, markers;
         handler = Gmaps.build('Google');
         handler.buildMap({
