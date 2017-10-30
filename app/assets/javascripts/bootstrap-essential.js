@@ -10,10 +10,14 @@ document.addEventListener("turbolinks:load", function() {
         $('.active').removeClass('active');
     });
 
-    function formatTime(date) {
+    function formatTime(date, currentDate) {
+        var date;
         var momentDate = moment(date);
+        if (currentDate) {
+            date = moment(currentDate).format("MMM Do, YYYY");
+        }
         return {
-            date: momentDate.format("MMM Do, YYYY"),
+            date: momentDate.format("YYYY") === '1999' ? date : momentDate.format("MMM Do, YYYY"),
             time: momentDate.format("hh:mmA")
         }
     }
@@ -25,9 +29,10 @@ document.addEventListener("turbolinks:load", function() {
     $('#eventModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         var eventData = button.data('item');
+        var currentDate = button.data('date');
         var modal = $(this);
-        var startTime = formatTime(new Date(eventData.start_time));
-        var endTime = formatTime(new Date(eventData.end_time));
+        var startTime = formatTime(new Date(eventData.start_time), currentDate);
+        var endTime = formatTime(new Date(eventData.end_time), currentDate);
         if (startTime.date === endTime.date) {
             modal.find('.modal-event-start-date').text(startTime.date);
             modal.find('.modal-event-start-time').text(startTime.time);

@@ -44,4 +44,21 @@ module ApplicationHelper
         }
     }
   end
+
+  def days_map
+    %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)
+  end
+
+  def get_days_list(daysString, options={})
+    days = daysString.split(',')
+    if options[:translate]
+      days.map! do |item|
+        days_map[item.to_i]
+      end
+    end
+    if options[:return_string]
+      days = days.join(', ')
+    end
+    days
+  end
 end

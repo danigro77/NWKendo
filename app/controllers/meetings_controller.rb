@@ -4,6 +4,7 @@ class MeetingsController < ApplicationController
 
   def manage
     @meetings = Meeting.all
+    @repeating_meetings = RepeatingMeeting.all
   end
 
   def destroy

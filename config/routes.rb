@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
   root to: 'home#landing'
-  resources :users
-  resources :images
-  resources :photographers
-  resources :resources
-  resources :meetings
-  resources :categories
-  resources :questions, except: [:show] do
+  resources :users, except: [:index, :show]
+  resources :images, except: [:index, :show]
+  resources :photographers, except: [:index, :show]
+  resources :resources, except: [:index, :show]
+  resources :meetings, except: [:index, :show]
+  resources :repeating_meetings, except: [:index, :show]
+  resources :categories, except: [:index, :show]
+  resources :questions, except: [:index, :show] do
     member do
       put 'change_position/:direction', to: 'questions#change_position', as: 'change_position'
     end

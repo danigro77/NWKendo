@@ -34,6 +34,14 @@ class HomeController < ApplicationController
     @meetings_by_day = Meeting.all.group_by{ |meeting|
       meeting.start_time.to_date
     }
+    repeating_meetings = RepeatingMeeting.all
+    @repeating_meetings = {}
+    repeating_meetings.each do |repeating_meeting|
+      days = repeating_meeting.days.split(',')
+      days.each do |day|
+        @repeating_meetings[day] = repeating_meeting
+      end
+    end
     @date = Date.parse(params[:date])
   end
 

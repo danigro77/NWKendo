@@ -25,13 +25,29 @@
   <div class="col-12">
     <%= calendar date do |date| %>
         <%= date.day %>
-        <% if meetings_by_day[date] %>
+        <% meetings_by_day[date] = [] %>
+        <% if date.sunday? && @repeating_meetings['0'] %>
+          <%meetings_by_day[date] << @repeating_meetings['0'] %>
+        <% elsif date.monday? && @repeating_meetings['1'] %>
+          <%meetings_by_day[date] << @repeating_meetings['1'] %>
+        <% elsif date.tuesday? && @repeating_meetings['2'] %>
+          <%meetings_by_day[date] << @repeating_meetings['2'] %>
+        <% elsif date.wednesday? && @repeating_meetings['3'] %>
+          <%meetings_by_day[date] << @repeating_meetings['3'] %>
+        <% elsif date.thursday? && @repeating_meetings['4'] %>
+          <%meetings_by_day[date] << @repeating_meetings['4'] %>
+        <% elsif date.friday? && @repeating_meetings['5'] %>
+          <%meetings_by_day[date] << @repeating_meetings['5'] %>
+        <% elsif date.saturday? && @repeating_meetings['6'] %>
+          <%meetings_by_day[date] << @repeating_meetings['6'] %>
+        <%end%>
+        <% if meetings_by_day[date].present? %>
             <ul class="calendar-day-content">
               <% meetings_by_day[date].each do |event| %>
                   <li>
                     <% klasses = %w(btn btn-outline-primary)%>
-                    <% klasses << 'multi-day-event' if event.start_time.day != event.end_time.day%>
-                    <button type="button" class="<%=klasses.join(' ')%>" data-toggle="modal" data-target="#eventModal" data-item="<%=event.to_json%>">
+                    <% klasses << 'multi-day-event' if event && event.start_time.day != event.end_time.day%>
+                    <button type="button" class="<%=klasses.join(' ')%>" data-toggle="modal" data-target="#eventModal" data-date="<%=date%>" data-item="<%=event.to_json%>">
                       <%= event.name %>
                     </button>
                   </li>
