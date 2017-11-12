@@ -61,4 +61,8 @@ module ApplicationHelper
     end
     days
   end
+
+  def format_time()
+
+  end
 end

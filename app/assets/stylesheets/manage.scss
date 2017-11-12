@@ -58,4 +58,47 @@
       }
     }
   }
+  .sub-header {
+    font-size: 1.1em;
+    line-height: 2em;
+    background: $kendo-blue-light;
+    color: white;
+    padding: 5px 15px;
+    &.collapsed {
+      border-bottom: 1px white solid;
+    }
+    .subheader-title {
+      display: inline-block;
+      width: 150px;
+      float: left;
+    }
+    .accordion-actions {
+      display: inline-block;
+      float: right;
+    }
+    i {
+      cursor: pointer;
+    }
+    .arrow-down {
+      display: none;
+    }
+  }
+  .search-block {
+    .row {
+      margin-bottom: 5px;
+    }
+    .search-labels{
+      font-size: 0.8em;
+    }
+    .submit-search {
+      input {
+        float: right
+      }
+    }
+  }
+  .result-info {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid $kendo-blue;
+  }
 }

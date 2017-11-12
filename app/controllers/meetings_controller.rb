@@ -3,7 +3,10 @@ class MeetingsController < ApplicationController
   before_action :authorize_admin
 
   def manage
-    @meetings = Meeting.all
+    @has_meetings = Meeting.all.length > 0
+    params[:filter_start_date] = parse_date_time(params[:filter_start_date]) if params[:filter_start_date].present?
+    params[:filter_end_date] = parse_date_time(params[:filter_end_date]) if params[:filter_end_date].present?
+    @meetings = Meeting.filter(params.slice(:filter_name, :filter_location, :filter_start_date, :filter_end_date))
     @repeating_meetings = RepeatingMeeting.all
   end
 
@@ -47,5 +50,10 @@ class MeetingsController < ApplicationController
   end
   def get_item
     @meeting = Meeting.find(params[:id])
+  end
+
+  def parse_date_time(date_string)
+    month, day, year = date_string.split('/')
+    DateTime.parse("20#{year}-#{month}-#{day}")
   end
 end

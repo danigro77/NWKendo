@@ -14,18 +14,18 @@
     </div>
   </div>
 
-  <ul class="nav nav-tabs" id="nw-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" href="#repeating">Repeating Meetings</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#special">Special Events</a>
-    </li>
-  </ul>
 
-  <div id="repeating" class="tab-pane active" role="tabpanel">
-    <% if @repeating_meetings.present? %>
-      <% @repeating_meetings.each do |rep_meeting| %>
+  <% if @repeating_meetings.present? %>
+    <div id='repeating'>
+      <div class="row sub-header">
+        <div class="subheader-title col">Repeating Meetings</div>
+        <div class="accordion-actions col-1">
+          <i class="material-icons arrow-up repeating">keyboard_arrow_up</i>
+          <i class="material-icons arrow-down repeating">keyboard_arrow_down</i>
+        </div>
+      </div>
+      <div class="result-block">
+        <% @repeating_meetings.each do |rep_meeting| %>
             <div class="row meeting-item-row item-row">
               <div class="col-1 meeting-symbol icon">
                 <i class="material-icons">date_range</i>
@@ -80,67 +80,113 @@
               </div>
             </div>
         <%end%>
-    <% else %>
-        <div class="col">No repeating meetings saved yet.</div>
-    <%end%>
-  </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="col">No repeating meetings saved yet.</div>
+  <%end%>
 
-  <div id="special" class="tab-pane" role="tabpanel">
-    <% if @meetings.present? %>
-        <% @meetings.each do |meeting| %>
-            <div class="row meeting-item-row item-row">
-              <div class="col-1 meeting-symbol icon">
-                <i class="material-icons">date_range</i>
+  <% if @has_meetings  %>
+    <div id='special'>
+      <div class="row sub-header">
+        <div class="subheader-title col">Special Meetings</div>
+        <div class="accordion-actions col-1">
+          <i class="material-icons arrow-up special">keyboard_arrow_up</i>
+          <i class="material-icons arrow-down special">keyboard_arrow_down</i>
+        </div>
+      </div>
+      <div class="result-block">
+        <div class="search-block row">
+          <%= form_tag(manage_meetings_path, :method => "get", id: "search-form", class: 'col') do %>
+            <div class="row">
+              <div class="col-3">
+                <%= text_field_tag :filter_name, params[:filter_name], class: 'form-control' %>
               </div>
-              <div class="col-11">
-                <div class="row meeting-content row-content">
-                  <div class="col meeting-name">
-                    <div class="label">Name</div>
-                    <div title="<%= meeting.name %>"><%= meeting.name %></div>
-                  </div>
-
-                  <div class="col-2 actions">
-                    <%= link_to meeting_path(meeting), method: :delete, class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
-                        <i class="material-icons">delete</i>
-                    <% end %>
-                    <%= link_to edit_meeting_path(meeting), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-meeting"  do %>
-                        <i class="material-icons <%meeting.id%>">edit</i>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="row meeting-content row-content">
-                  <div class="col meeting-start-time">
-                    <div class="label">Start Time</div>
-                    <div title="<%= meeting.start_time %>"><%= meeting.start_time.strftime('%d %b %y, %I:%M %p') %></div>
-                  </div>
-                  <div class="col meeting-end-time">
-                    <div class="label">End Time</div>
-                    <div title="<%= meeting.end_time %>"><%= meeting.end_time.strftime('%d %b %y, %I:%M %p') %></div>
-                  </div>
-                </div>
-                <div class="row meeting-content row-content">
-                  <div class="col meeting-location">
-                    <div class="label">Location</div>
-                    <div title="<%= meeting.location %>"><%= meeting.location %></div>
-                  </div>
-                  <% if meeting.location.present? %>
-                      <div class="col meeting-location">
-                        <%= link_to 'Test your location', "https://www.google.com/maps/place/#{meeting.location.gsub(/ /, '+')}", target: '_blank' %>
-                      </div>
-                  <%end%>
-                </div>
-                <div class="row meeting-content row-content">
-                  <div class="col-8 meeting-description">
-                    <div class="label">Description</div>
-                    <div title="<%= meeting.description %>"><%= meeting.description %></div>
-                  </div>
-                </div>
+              <div class="col-3">
+                <%= text_field_tag :filter_location, params[:filter_location], class: 'form-control' %>
+              </div>
+              <div class="col-3">
+                <% start_val = params[:filter_start_date] ? params[:filter_start_date].strftime('%m/%d/%y') : DateTime.now.strftime('%m/%d/%y') %>
+                <%= text_field_tag :filter_start_date, params[:filter_start_date], class: 'form-control', placeholder: "(mm/dd/yy)", value: start_val %>
+              </div>
+              <div class="col-3">
+                <% end_val = params[:filter_end_date] ? params[:filter_end_date].strftime('%m/%d/%y'): '' %>
+                <%= text_field_tag :filter_end_date, params[:filter_end_date], class: 'form-control', placeholder: "(mm/dd/yy)", value: end_val %>
               </div>
             </div>
+            <div class="row search-labels">
+              <div class="col-3">Event name</div>
+              <div class="col-3">Location</div>
+              <div class="col-3">Start date</div>
+              <div class="col-3">End date</div>
+            </div>
+            <div class="row">
+              <div class="col-9"></div>
+              <div class="col-3 submit-search">
+                <%= submit_tag "Search", :name => nil %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <%if @meetings.present?%>
+            <% @meetings.each do |meeting| %>
+                <div class="row meeting-item-row item-row">
+                  <div class="col-1 meeting-symbol icon">
+                    <i class="material-icons">date_range</i>
+                  </div>
+                  <div class="col-11">
+                    <div class="row meeting-content row-content">
+                      <div class="col meeting-name">
+                        <div class="label">Name</div>
+                        <div title="<%= meeting.name %>"><%= meeting.name %></div>
+                      </div>
+
+                      <div class="col-2 actions">
+                        <%= link_to meeting_path(meeting), method: :delete, class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+                            <i class="material-icons">delete</i>
+                        <% end %>
+                        <%= link_to edit_meeting_path(meeting), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-meeting"  do %>
+                            <i class="material-icons <%meeting.id%>">edit</i>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="row meeting-content row-content">
+                      <div class="col meeting-start-time">
+                        <div class="label">Start Time</div>
+                        <div title="<%= meeting.start_time %>"><%= meeting.start_time.strftime('%d %b %y, %I:%M %p') %></div>
+                      </div>
+                      <div class="col meeting-end-time">
+                        <div class="label">End Time</div>
+                        <div title="<%= meeting.end_time %>"><%= meeting.end_time.strftime('%d %b %y, %I:%M %p') %></div>
+                      </div>
+                    </div>
+                    <div class="row meeting-content row-content">
+                      <div class="col meeting-location">
+                        <div class="label">Location</div>
+                        <div title="<%= meeting.location %>"><%= meeting.location %></div>
+                      </div>
+                      <% if meeting.location.present? %>
+                          <div class="col meeting-location">
+                            <%= link_to 'Test your location', "https://www.google.com/maps/place/#{meeting.location.gsub(/ /, '+')}", target: '_blank' %>
+                          </div>
+                      <%end%>
+                    </div>
+                    <div class="row meeting-content row-content">
+                      <div class="col-8 meeting-description">
+                        <div class="label">Description</div>
+                        <div title="<%= meeting.description %>"><%= meeting.description %></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <%end%>
+        <%else%>
+            <div class="col result-info">No meetings found.</div>
         <%end%>
-    <% else %>
-        <div class="col">No meetings saved yet.</div>
-    <%end%>
-  </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="col result-info">No meetings saved yet.</div>
+  <%end%>
 
 </div>
