@@ -11,7 +11,7 @@ document.addEventListener("turbolinks:load", function() {
             $('.' + identifier).removeClass('col-5').addClass('col-12 open-card');
         }
         $('html, body').animate({
-            scrollTop: $(`#${identifier}`).offset().top -100
+            scrollTop: $('#' + identifier).offset().top -100
         }, 2000);
     });
 });
