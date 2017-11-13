@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
     $('.accordion-actions i').on('click', function() {
-        let classes = this.className.split(/\s+/);
-        let areaName = classes[2];
+        var classes = this.className.split(/\s+/);
+        var areaName = classes[2];
         if (classes.includes('arrow-up')) {
             $(`#${areaName} .accordion-actions i.arrow-up`).hide();
             $(`#${areaName} .accordion-actions i.arrow-down`).show();
