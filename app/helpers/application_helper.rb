@@ -15,7 +15,7 @@ module ApplicationHelper
         row_1: [
             {title: 'Dojo Info', path: manage_path, icon: 'dojo-icon'},
             {title: 'Resources & FAQ', path: faq_path, icon: 'resources-icon'},
-            {title: 'Contact Us', path: 'mailto:daniela@email.com', icon: 'email-icon'},
+            {title: 'Contact Us', path: 'mailto:info@northwestkendo.com', icon: 'email-icon'},
         ],
         row_2: [
             {title: 'Practice Hours', path: schedule_path(Date.current), icon: 'date-range-white-icon',
