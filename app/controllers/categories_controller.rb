@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
 
   private
   def category_params
-    params.require(:category).permit(:name, :for_type)
+    params.require(:category).permit(:name, :for_type, :description, :image_url)
   end
   def get_item
     @category = Category.find(params[:id])

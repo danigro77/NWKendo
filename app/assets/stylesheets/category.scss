@@ -1,7 +1,12 @@
 @import "mixin";
 @import "variables";
 .manage-categories {
-
+  .preview {
+    padding: 0;
+    img {
+      width: 100%;
+    }
+  }
 }
 .category-form {
   .position, label {

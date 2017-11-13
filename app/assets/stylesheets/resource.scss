@@ -22,22 +22,37 @@
   }
 }
 
-.info-pages.faq {
-  .resources-view {
+.info-pages.faq-resources {
+  .resource {
     margin-bottom: 30px;
-    .resource-link, .resource-description {
+    .link, .description {
       float: left;
       text-align: left;
       font-size: 14px;
     }
-    .resource-link {
-      width: 30%;
-      font-weight: 600;
+    .open-card {
+      .link {
+        width: 30%;
+        font-weight: 600;
+      }
+      .description {
+        font-weight: 400;
+        &:visited {
+          color: $font-color-body;
+        }
+      }
     }
-    .resource-description {
-      font-weight: 400;
-      &:visited {
-        color: $font-color-body;
+  }
+  .open-card {
+    .q-and-a {
+      clear: both;
+      .question {
+        width: 100%;
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .answer {
+        padding-left: 30px;
       }
     }
   }

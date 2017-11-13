@@ -15,8 +15,22 @@
                    { class: 'category-type-select form-control col-5', id: 'category-type' }) %>
     </div>
 
+    <div class="form-group row">
+      <label for="category-image-url" class="col-2 col-form-label">Image Url</label>
+      <div class="col-12">
+        <%= f.text_field :image_url, class: 'form-control', id:"category-image-url" %>
+      </div>
+    </div>
 
-      <% if category.created_at.present? %>
+    <div class="form-group row">
+      <label for="category-description" class="col-2 col-form-label">Description</label>
+      <div class="col-12">
+        <%= f.text_area :description, class: 'form-control', rows: "3", id:"category-description" %>
+      </div>
+    </div>
+
+
+    <% if category.created_at.present? %>
       <div class="dates row">
         <div class="date col">Created at: <%= category.created_at.strftime('%d %b %y') %></div>
         <div class="date col">Updated at: <%= category.updated_at.strftime('%d %b %y') %></div>

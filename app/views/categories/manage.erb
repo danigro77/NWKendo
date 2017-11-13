@@ -17,9 +17,11 @@
   <% if @categories.present? %>
       <% @categories.each do |category| %>
         <div class="row category-item-row item-row">
-          <div class="col">
+          <div class="col-4 preview">
+            <% url = category.image_url || 'default-image.png' %>
+            <%= image_tag url, {alt: category.name, class: 'preview-img'} %>
           </div>
-          <div class="col-12">
+          <div class="col-8">
             <div class="row category-content row-content">
               <div class="col-1 category-symbol icon">
                 <i class="material-icons">bookmark_border</i>
@@ -40,6 +42,13 @@
                 <%= link_to edit_category_path(category), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-category"  do %>
                     <i class="material-icons <%category.id%>">edit</i>
                 <% end %>
+              </div>
+            </div>
+            <div class="row category-content row-content">
+              <div class="col-1"></div>
+              <div class="col description">
+                <div class="label">Description</div>
+                <div class="item" title="<%= category.description %>"><%= category.description %></div>
               </div>
             </div>
           </div>

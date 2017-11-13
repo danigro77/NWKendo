@@ -1,72 +1,63 @@
-<div class="info-pages faq col">
+<% max_shown = 5 %>
+<div class="info-pages col card-view faq-resources"}>
   <div class="row"><h4>Resources & FAQ</h4></div>
 
-  <div class="card text-center resources-view">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs" id="nw-tabs">
-        <%@categories.each_with_index do |category, idx|%>
-          <li class="nav-item">
-            <a  class="nav-link <%= idx == 0 ? 'active' : ''%>"
-                data-toggle="tab"
-                role="tab"
-                aria-controls="<%= category.id %>-tab"
-                href="#<%= category.id %>-tab">
-              <%=category.name%>
-            </a>
+  <div class="row">
+    <div class="faq card col-5 res-faq" id="faq">
+      <img class="card-img-top" src="<%=random_default_image%>" alt="FAQ">
+      <div class="card-body">
+        <h4 class="card-title">Frequently asked questions</h4>
+        <p class="card-text">
+          Find answers to many of your questions here.
+          <span class="show-when-closed">Click on this card to see more.</span>
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @questions.each_with_index do |question, index|%>
+          <li class="list-group-item q-and-a <%=index >= max_shown ? 'hide-when-closed' : '' %>" >
+            <div class='question'><%=question.question%></div>
+            <div class="hide-when-closed answer">
+              <%=question.question%>
+              <% if question.link_to_page.present? %>
+                <span class="hide-when-closed">
+                  <%= link_to '[Read more here]', question.link_to_page %>
+                </span>
+              <%end%>
+            </div>
           </li>
         <%end%>
       </ul>
+      <% if @questions.length > max_shown %>
+          <dev class="more">[...]</dev>
+      <% end %>
     </div>
 
-    <%@resources.each_with_index do |(category_id, resources), idx|%>
-        <%resources.each do |resource|%>
-            <div class="card-block tab-pane <%= idx == 0 ? 'active' : ''%>"
-                 id="<%= category_id %>-tab"
-                 role="tabpanel"
-            >
+    <%@grouped_resources.each_with_index do |(category_id, resources), idx|%>
+      <% category = resources.first.category%>
+      <div class="res-cat-<%=category_id %> card col-5 res-faq" id="res-cat-<%=category_id %>">
+        <img class="card-img-top" src="<%=category.image_url ? category.image_url : random_default_image%>" alt="FAQ">
+        <div class="card-body">
+          <h4 class="card-title"><%= category.name %></h4>
+          <p class="card-text">
+            <%= category.description %>
+            <div class="show-when-closed">Click on this card to see more.</div>
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% resources.each_with_index do |resource, index|%>
+            <li class="list-group-item resource <%=index >= max_shown ? 'hide-when-closed' : '' %>" >
               <% url = resource.url.match(/^https?:\/\//) ? resource.url : "http://#{resource.url}"%>
-              <div class="resource-link-block">
-                <%= link_to url, target: '_blank' do %>
-                    <div class="resource-link"><%=resource.title%></div>
-                    <div class="resource-description"><%= resource.description%></div>
-                <%end%>
-              </div>
-            </div>
-        <%end%>
+              <%= link_to url, target: '_blank' do %>
+                <span class="link"><%=resource.title%></span>
+              <%end%>
+              <span class="description hide-when-closed"><%= resource.description%></span>
+            </li>
+          <%end%>
+        </ul>
+        <% if @questions.length > max_shown %>
+          <dev class="more">[...]</dev>
+        <% end %>
+      </div>
     <%end%>
   </div>
-
-  <hr/>
-  <% @questions.each_with_index do |question, index|%>
-    <%if question.link_to_page.present? %>
-      <%= link_to get_path(question) do%>
-        <div class="question-answer-row row">
-          <div class="col-1">
-            <i class="material-icons">question_answer</i>
-          </div>
-          <div class="question col-4">
-            <%= question.question %>
-          </div>
-          <div class="answer col">
-            <%= question.answer %>
-          </div>
-        </div>
-        <hr/>
-      <%end%>
-    <%else%>
-      <div class="question-answer-row row">
-        <div class="col-1">
-          <i class="material-icons">question_answer</i>
-        </div>
-        <div class="question col-4">
-          <%= question.question %>
-        </div>
-        <div class="answer col">
-          <%= question.answer %>
-        </div>
-      </div>
-      <hr/>
-    <%end%>
-  <%end%>
 </div>
-

@@ -9,9 +9,9 @@ class HomeController < ApplicationController
 
   def faq
     @categories = Category.all.where(for_type: 'resource')
-    @resources = {}
+    @grouped_resources = {}
     @categories.each do |cat|
-      @resources[cat.id] = Resource.where(category: cat)
+      @grouped_resources[cat.id] = Resource.where(category: cat)
     end
     @questions = Question.all.order(position: :asc)
   end

@@ -45,6 +45,18 @@ module ApplicationHelper
     }
   end
 
+  def default_images
+    %w(https://farm5.staticflickr.com/4232/34885233234_14e7b14ed9_k.jpg
+      https://farm5.staticflickr.com/4137/35726718105_bc6ba489f3_k.jpg
+      https://farm5.staticflickr.com/4057/35686704636_536cd4e2df_k.jpg
+      https://farm5.staticflickr.com/4283/34884756944_38f70f27d5_k.jpg
+    )
+  end
+
+  def random_default_image
+    default_images.sample
+  end
+
   def days_map
     %w(Sunday Monday Tuesday Wednesday Thursday Friday Saturday)
   end
