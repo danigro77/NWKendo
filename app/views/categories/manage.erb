@@ -18,7 +18,7 @@
       <% @categories.each do |category| %>
         <div class="row category-item-row item-row">
           <div class="col-4 preview">
-            <% url = category.image_url || 'default-image.png' %>
+            <% url = category.image_url ? category.image_url : 'default-image.png' %>
             <%= image_tag url, {alt: category.name, class: 'preview-img'} %>
           </div>
           <div class="col-8">
