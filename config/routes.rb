@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :meetings, except: [:index, :show]
   resources :repeating_meetings, except: [:index, :show]
   resources :categories, except: [:index, :show]
-  resources :questions, except: [:index, :show] do
+  resources :videos, except: [:index, :show]
+
+    resources :questions, except: [:index, :show] do
     member do
       put 'change_position/:direction', to: 'questions#change_position', as: 'change_position'
     end
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
     get 'categories', to: 'categories#manage', as: 'manage_categories'
     get 'users', to: 'users#manage', as: 'manage_users'
     get 'meetings', to: 'meetings#manage', as: 'manage_meetings'
+    get 'videos', to: 'videos#manage', as: 'manage_videos'
   end
 
   # HOME

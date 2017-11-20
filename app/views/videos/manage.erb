@@ -1,0 +1,63 @@
+<div class="manage manage-videos">
+  <div class="row manage-title-row">
+    <div class="col-2"></div>
+    <div class="col-8 manage-titles">
+      <h3 class="manage-header">Manage</h3>
+      <h4 class="manage-subheader">Videos</h4>
+    </div>
+    <div class="col-2">
+      <% if @type != 'all' %>
+          <%= link_to new_video_path, class: "add-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored fixed-add-button" do%>
+              <i class="material-icons">add</i>
+          <%end%>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @videos.present? %>
+      <% @videos.each do |video| %>
+          <% url = video.url %>
+          <div class="row video-item-row item-row">
+            <div class="col preview">
+              <iframe width="100%" height="100%" src="<%= url %>" frameborder="0" gesture="media" allowfullscreen></iframe>
+            </div>
+            <div class="col">
+              <div class="row video-content row-content">
+                <div class="col title">
+                  <div class="label">Title</div>
+                  <div class="item" title="<%= video.title %>"><%= video.title %></div>
+                </div>
+                <div class="col-2 actions">
+                  <%= link_to video_path(video), method: :delete, class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+                      <i class="material-icons">delete</i>
+                  <% end %>
+                  <%= link_to edit_video_path(video), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored edit-video"  do %>
+                      <i class="material-icons <%video.id%>">edit</i>
+                  <% end %>
+                </div>
+              </div>
+              <div class="row video-content row-content">
+                <div class="col taken_on">
+                  <div class="label">Taken on</div>
+                  <div class="item" title="<%= video.taken_on %>"><%= video.taken_on %></div>
+                </div>
+              </div>
+              <div class="row video-content row-content">
+                <div class="col url">
+                  <div class="label">Url</div>
+                  <div class="item" title="<%= url %>"><%= url %></div>
+                </div>
+              </div>
+              <div class="row video-content row-content">
+                <div class="col description">
+                  <div class="label">Description</div>
+                  <div class="item" title="<%= video.description %>"><%= video.description %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+      <%end%>
+  <% else %>
+      <div class="col">No videos saved yet.</div>
+  <%end%>
+</div>

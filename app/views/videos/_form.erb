@@ -1,0 +1,64 @@
+<div class="col">
+  <%= form_for(video) do |f| %>
+
+      <% if video.present? && video.url%>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col preview">
+            <iframe width="100%" height="100%" class="video-preview" src="<%= video.url %>" frameborder="0" gesture="media" allowfullscreen></iframe>
+          </div>
+          <div class="col-3"></div>
+        </div>
+      <%end%>
+
+      <div class="form-group row">
+        <label for="video-url" class="col-2 col-form-label">Url</label>
+        <div class="col-12">
+          <%= f.text_field :url, class: 'form-control', id: 'video-url' %>
+          <p class="info">Copy the src url from the embedded html code (like: https://www.youtube.com/embed/iVQrihJZCJ4)</p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="video-title" class="col-2 col-form-label">Title</label>
+        <div class="col-12">
+          <%= f.text_field :title, class: 'form-control', id: 'video-title' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="video-taken-on" class="col-2 col-form-label">Video take on</label>
+        <div class="col-12">
+          <% taken_on_time = video.taken_on.present? ? video.taken_on.strftime('%Y-%m-%d') : video.taken_on %>
+          <%= f.text_field :taken_on, class: 'form-control', id: 'video-taken-on', type: "date", value: taken_on_time  %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="video-description" class="col-2 col-form-label">Description</label>
+        <div class="col-12">
+          <%= f.text_area :description, class: 'form-control', rows: "3", id:"video-description" %>
+        </div>
+      </div>
+
+
+      <% if video.created_at.present? %>
+        <div class="dates row">
+          <div class="date col">Created at: <%= video.created_at.strftime('%d %b %y') %></div>
+          <div class="date col">Updated at: <%= video.updated_at.strftime('%d %b %y') %></div>
+          <div class="button col"><%= f.submit 'Save', class: "video-save-button btn btn-outline-primary btn-lg"%></div>
+        </div>
+      <%else%>
+        <div class="dates row">
+          <div class="date col"></div>
+          <div class="date col"></div>
+          <div class="button col"><%= f.submit 'Save', class: "video-save-button btn btn-outline-primary btn-lg"%></div>
+        </div>
+      <%end%>
+
+
+
+  <%end%>
+
+
+</div>
