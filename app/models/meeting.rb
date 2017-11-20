@@ -5,6 +5,7 @@ class Meeting < ApplicationRecord
   scope :filter_name, -> (name) { where("name ilike ?", "%#{name}%")}
   scope :filter_location, -> (location) { where("location ilike ?", "%#{location}%")}
   scope :filter_start_date, -> (date) { where("start_time >= ?", date)}
+  scope :filter_end_date, -> (date) { where("end_time >= ?", date)}
 
   before_save :ensure_utc
 

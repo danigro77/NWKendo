@@ -7,13 +7,13 @@ class HomeController < ApplicationController
     @images = Image.where(for_page: :home_landing)
   end
 
-  def faq
+  def material
     @categories = Category.all.where(for_type: 'resource')
-    @grouped_resources = {}
-    @categories.each do |cat|
-      @grouped_resources[cat.id] = Resource.where(category: cat)
-    end
-    @questions = Question.all.order(position: :asc)
+    # @grouped_resources = {}
+    # @categories.each do |cat|
+    #   @grouped_resources[cat.id] = Resource.where(category: cat)
+    # end
+    # @questions = Question.all.order(position: :asc)
   end
   def credits
   end

@@ -1,0 +1,39 @@
+<div class="info-pages col card-view faq-resources"}>
+  <div class="row"><h4>Resources & FAQ</h4></div>
+
+  <div class="row">
+    <div class="faq outer-card col-lg-3 col-md-4 col-sm-6 col-12 res-faq" id="faq">
+      <div class="card">
+        <%= link_to material_faq_path do%>
+            <%= image_tag random_default_image, {alt: 'FAQ', class: 'card-img-top'} %>
+            <div class="card-body">
+              <div class="card-title">FAQ</div>
+            </div>
+        <%end%>
+      </div>
+    </div>
+
+    <div class="videos outer-card col-lg-3 col-md-4 col-sm-6 col-12 res-faq" id="videos">
+      <div class="card">
+        <%= link_to material_videos_path do%>
+          <%= image_tag random_default_image, {alt: 'Videos', class: 'card-img-top'} %>
+          <div class="card-body">
+            <div class="card-title">Videos</div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
+    <%@categories.each do |category,|%>
+      <div class="res-cat-<%=category.id %> outer-card col-lg-3 col-md-4 col-sm-6 col-12 res-faq" id="res-cat-<%=category.id %>">
+        <div class="card">
+          <% url = category.image_url ? category.image_url : random_default_image%>
+          <%= image_tag url, {alt: category.name, class: 'card-img-top'} %>
+          <div class="card-body">
+            <div class="card-title"><%= category.name %></div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

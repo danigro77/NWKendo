@@ -1,0 +1,100 @@
+@import "variables";
+.material-views {
+  .action-block {
+    cursor: pointer;
+    &.highlight {
+      cursor: default;
+    }
+    .hidden-block {
+      &.show-first {
+        display: block;
+      }
+      &.hide {
+        display: none;
+      }
+    }
+  }
+  .faq-block {
+    letter-spacing: 1px;
+    margin: 15px 0;
+    padding: 5px;
+    &.highlight {
+      border: solid 1px $kendo-blue-light;
+    }
+    .question {
+      font-weight: 500;
+    }
+    .answer {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+  &.video-block {
+    .select-box {
+      margin: 20px 0;
+      .month-nav {
+        background: $kendo-blue;
+        color: white;
+        font-size: 1.5em;
+        margin-bottom: 5px;
+        padding: 2px 20%;
+        .month-arrow {
+          margin-top: 5px;
+          &.disabled {
+            i {
+              color: #666666;
+              cursor: default;
+            }
+          }
+          i {
+            font-size: 1.4em;
+            cursor: pointer;
+            color: white;
+          }
+        }
+        .current-month {
+          text-align: center;
+        }
+      }
+      .video-selector {
+        cursor: pointer;
+        border: 1px solid $kendo-blue-light;
+        border-radius: 4px;
+        display: inline;
+        padding: 5px;
+        margin: 0 5px 5px 0;
+        &.selected {
+          background: $kendo-blue-light;
+          color: white;
+        }
+      }
+    }
+    .video-container {
+      padding: 20px;
+      .video-header {
+        margin: 0;
+        margin-bottom: 2px;
+        background: $kendo-blue;
+        color: white;
+        font-size: 1.5em;
+        .video-date {
+          text-align: right;
+        }
+      }
+      .video-view {
+        border: $kendo-blue 1px solid;
+        background: $kendo-blue;
+        margin: 0;
+        padding: 0;
+        height: 500px;
+      }
+      .video-description {
+        font-size: 0.95em;
+        margin: 0;
+        margin-top: 15px;
+        border: $kendo-blue 1px solid;
+        padding: 5px 15px;
+      }
+    }
+  }
+}

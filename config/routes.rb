@@ -30,8 +30,15 @@ Rails.application.routes.draw do
     get 'videos', to: 'videos#manage', as: 'manage_videos'
   end
 
+  get '/material', to: 'home#material', as: 'material'
+  scope :materials do
+    get 'faq', to: 'materials#faq', as: 'material_faq'
+    get 'videos', to: 'materials#videos', as: 'material_videos'
+    get 'categories/:id', to: 'materials#categories', as: 'material_categories'
+  end
+
   # HOME
-  get '/faq', to: 'home#faq', as: 'faq'
+
   get '/credits', to: 'home#credits', as: 'credits'
   get '/terms', to: 'home#terms', as: 'terms'
   get '/map', to: 'home#map', as: 'map'

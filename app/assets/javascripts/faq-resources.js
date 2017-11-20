@@ -1,17 +1,27 @@
 document.addEventListener("turbolinks:load", function() {
-    $('.res-faq').on('click', function () {
-        var identifier = this.className.split(' ')[0];
-        var currentOpen = $('.open-card');
-        if (currentOpen.length > 0) {
-            currentOpen.removeClass('col-12 open-card').addClass('col-5');
-            if (!currentOpen.hasClass(identifier)) {
-                $('.' + identifier).removeClass('col-5').addClass('col-12 open-card');
-            }
+    $('.action-block').on('click', function (event) {
+        $('.show-first').removeClass('show-first');
+        $('.hidden-block').hide();
+        $('.action-block').removeClass('highlight');
+        var num = this.className.split(' ')[0];
+        var block = $('.action-block.' + num);
+        var hiddenBlock = $('.'+num+' .hidden-block');
+        hiddenBlock.show();
+        block.addClass('highlight');
+    });
+    $('.video-selector').on('click', function (event) {
+        var index = this.className.split(' ')[0];
+        var data = JSON.parse(event.target.dataset.video);
+        $('.video-selector.selected').removeClass('selected');
+        $('.video-selector.'+index).addClass('selected');
+        $('.video-title').html(data.title);
+        $('.video-date').html(data.taken_on);
+        $('.video-preview').prop('src', data.url);
+        if (data.description) {
+            $('.video-description').css('display', 'block');
+            $('.video-description').html(data.description);
         } else {
-            $('.' + identifier).removeClass('col-5').addClass('col-12 open-card');
+            $('.video-description').css('display', 'none');
         }
-        $('html, body').animate({
-            scrollTop: $('#' + identifier).offset().top -100
-        }, 2000);
     });
 });

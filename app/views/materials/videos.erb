@@ -1,0 +1,41 @@
+<div class="material-views video-block">
+  <%= render :partial => "layouts/form_header", :locals => { :title => 'Videos' } %>
+  <div class="col-12 select-box">
+    <div class="month-nav row">
+      <%prev_date, next_date = @month_nav[@current_date_index-1], @month_nav[@current_date_index+1]%>
+      <%if prev_date && @current_date_index > 0%>
+        <%= link_to material_videos_path(new_date: prev_date) do%>
+            <div class="prev-month month-arrow col-1" title="Previous Month"><i class="material-icons">keyboard_arrow_left</i></div>
+        <%end%>
+      <%else%>
+          <div class="prev-month month-arrow col-1 disabled" title="Previous Month not available"><i class="material-icons">keyboard_arrow_left</i></div>
+      <%end%>
+      <div class="current-month col"><%=months_map[@current_month_id]%></div>
+      <%if next_date %>
+        <%= link_to material_videos_path(new_date: next_date) do%>
+            <div class="next-month month-arrow col-1" title="Next Month"><i class="material-icons">keyboard_arrow_right</i></div>
+        <%end%>
+      <%else%>
+          <div class="next-month month-arrow col-1 disabled" title="Next Month not available"><i class="material-icons">keyboard_arrow_right</i></div>
+      <%end%>
+    </div>
+
+    <%@videos.each_with_index do |video, index|%>
+        <%= content_tag "div", id: "video-#{index}", class: "#{index} video-selector #{index==0 ? 'selected' : ''}", data: {video: video.to_json} do %>
+            <%=video.title%> - <%=video.taken_on%>
+        <% end %>
+    <%end%>
+  </div>
+
+  <div class="col-12 video-container card">
+    <% video = @videos.first %>
+    <div class="video-header row">
+      <div class="video-title col-6"><%=video.title%></div>
+      <div class="video-date col-6"><%=video.taken_on%></div>
+    </div>
+    <div class="video-view row">
+      <iframe width="100%" height="100%" class="col-12 video-preview" src="<%=video.url%>" frameborder="0" gesture="media" allowfullscreen></iframe>
+    </div>
+    <div class="video-description row col-12"><%=video.description%></div>
+  </div>
+</div>

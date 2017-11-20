@@ -1,0 +1,9 @@
+<div class="material-views">
+  <%= render :partial => "layouts/form_header", :locals => { :title => 'Frequently asked questions' } %>
+  <%@questions.each_with_index do |question, index|%>
+    <div class="faq-block action-block <%=question.id%> <%= index === 0 ? "highlight" : ""%>">
+      <div class="question"><%=question.question%></div>
+      <div class="hidden-block answer <%= index === 0 ? "show-first" : "hide"%>"><%=question.answer%></div>
+    </div>
+  <%end%>
+</div>
